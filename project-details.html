@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project Details | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div data-include="../Assets/includes/navbar.html"></div>
+
+    <!-- Main Project Info -->
+    <main class="container" style="padding: 150px 2rem 50px 2rem;">
+        <a href="index.html#projects" class="back-link">← Back to Portfolio</a>
+        <div class="details-content" style="margin-top: 2rem;">
+            <h1 id="proj-title">Loading...</h1>
+            <p id="proj-desc" style="font-size: 1.25rem; color: var(--text-muted); margin: 2rem 0; line-height: 1.8;"></p>
+            <a id="proj-link" href="#" target="_blank" class="btn btn-primary" style="font-size: 1.1rem;">Open Project</a>
+        </div>
+    </main>
+
+    <!-- More Projects Section -->
+    <section class="container" style="padding: 4rem 2rem;">
+        <h2 style="margin-bottom: 2rem;">More Projects</h2>
+        <div class="projects-grid" id="more-projects-grid">
+            <!-- Related projects injected here -->
+        </div>
+    </section>
+
+    <div data-include="../Assets/includes/footer.html"></div>
+
+    <script src="../js/include.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // 1. Load project details from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        document.getElementById('proj-title').innerText = urlParams.get('title') || "Project";
+        document.getElementById('proj-desc').innerText = urlParams.get('desc') || "No description provided.";
+        
+        const link = document.getElementById('proj-link');
+        const live = urlParams.get('live');
+        const figma = urlParams.get('figma');
+        
+        if (live && live !== "null" && live !== "") {
+            link.href = live;
+            link.innerText = "Open Live Website";
+        } else {
+            link.href = figma;
+            link.innerText = "View Figma Presentation";
+        }
+
+        // 2. Load "More Projects" dynamically
+        async function loadMoreProjects() {
+            const supabase = supabase.createClient('YOUR_SUPABASE_URL', 'YOUR_SUPABASE_ANON_KEY');
+            const { data: projects } = await supabase.from('projects').select('*').limit(3);
+            
+            const grid = document.getElementById('more-projects-grid');
+            grid.innerHTML = ''; 
+
+            projects.forEach(p => {
+                const detailsUrl = `project-details.html?title=${encodeURIComponent(p.title)}&desc=${encodeURIComponent(p.description)}&live=${p.live_url}&figma=${p.figma_url}`;
+                grid.innerHTML += `
+                    <div class="project-card" style="background-image: url('${p.image_url}')">
+                        <div class="project-overlay"></div>
+                        <div class="project-info">
+                            <h3>${p.title}</h3>
+                            <a href="${detailsUrl}" class="btn btn-secondary">View Details</a>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+        loadMoreProjects();
+    </script>
+</body>
+</html>

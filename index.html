@@ -8,19 +8,7 @@
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a href="#" class="logo">K</a>
-            <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="resume.pdf" target="_blank">Resume</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <button id="theme-toggle" class="theme-btn">🌙</button>
-        </div>
-    </nav>
+<div data-include="../Assets/includes/navbar.html"></div>
 
     <header class="hero-section" id="hero">
         <div class="overlay"></div>
@@ -52,7 +40,7 @@
             <h2>Selected Work</h2>
             <div class="projects-grid">
                 <!-- Project 1 -->
-                <div class="project-card" style="background-image: url('../Assests/img/Izaks_BG.png');">
+                <div class="project-card" style="background-image: url('../Assets/img/Izaks_BG.png');">
                     <div class="project-overlay"></div>
                     <div class="project-info">
                         <h3>E-Commerce Platform</h3>
@@ -62,7 +50,7 @@
                 </div>
                 
                 <!-- Project 2 -->
-                <div class="project-card" style="background-image: url('../Assests/img/Etransit_BG.png');">
+                <div class="project-card" style="background-image: url('../Assets/img/Etransit_BG.png');">
                     <div class="project-overlay"></div>
                     <div class="project-info">
                         <h3>Analytics Dashboard</h3>
@@ -72,7 +60,7 @@
                 </div>
 
                 <!-- Project 3 -->
-                <div class="project-card" style="background-image: url('../Assests/img/Izaks_BG.png');">
+                <div class="project-card" style="background-image: url('../Assets/img/Izaks_BG.png');">
                     <div class="project-overlay"></div>
                     <div class="project-info">
                         <h3>E-Commerce Platform</h3>
@@ -90,48 +78,72 @@
         </div>
     </section>
 
-    <footer class="contact-section" id="contact">
-        <div class="container text-center">
-            <h2>Let's work together</h2>
-            <a href="mailto:your.email@example.com" class="email-link">your.email@example.com</a>
-        </div>
-    </footer>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="../js/include.js"></script>
+    <script src="../js/script.js"></script> 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-import { createClient } from '@supabase/supabase-js';
+    <script>
 
-const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
+        // Function to handle the opening of the modal
+    window.openModal = (title, desc, liveUrl, figmaUrl) => {
+        const modal = document.getElementById('project-modal');
+        const titleEl = document.getElementById('modal-title');
+        const descEl = document.getElementById('modal-desc');
+        const linkEl = document.getElementById('action-link');
 
-async function loadProjects() {
-    const { data: projects } = await supabase.from('projects').select('*');
-    const grid = document.querySelector('.projects-grid');
-    
-    projects.forEach(p => {
-        grid.innerHTML += `
-            <div class="project-card" style="background-image: url('${p.image_url}')">
-                <div class="project-info">
-                    <h3>${p.title}</h3>
-                    <button class="btn" onclick="openModal('${p.description}', '${p.live_url}', '${p.figma_url}')">Open</button>
+        titleEl.innerText = title;
+        descEl.innerText = desc;
+
+        // Smart Linking Logic
+        if (liveUrl && liveUrl !== "null" && liveUrl !== "") {
+            linkEl.href = liveUrl;
+            linkEl.innerText = "Open Browser";
+        } else {
+            linkEl.href = figmaUrl;
+            linkEl.innerText = "View Figma Presentation";
+        }
+
+        modal.style.display = 'flex';
+    };
+
+    // Function to close modal
+    window.closeModal = () => {
+        document.getElementById('project-modal').style.display = 'none';
+    };
+
+    // Close modal if clicking outside the box
+    window.onclick = (event) => {
+        const modal = document.getElementById('project-modal');
+        if (event.target == modal) closeModal();
+    };
+
+    // Fetching from Supabase
+    // Replace the fetchProjects logic in your index.html script
+    async function fetchProjects() {
+        const supabase = supabase.createClient('YOUR_SUPABASE_URL', 'YOUR_SUPABASE_ANON_KEY');
+        const { data: projects } = await supabase.from('projects').select('*');
+        
+        const grid = document.querySelector('.projects-grid');
+        grid.innerHTML = ''; 
+
+        projects.forEach(p => {
+            // Construct the URL with parameters
+            const detailsUrl = `project-details.html?title=${encodeURIComponent(p.title)}&desc=${encodeURIComponent(p.description)}&live=${p.live_url}&figma=${p.figma_url}`;
+            
+            grid.innerHTML += `
+                <div class="project-card" style="background-image: url('${p.image_url}')">
+                    <div class="project-overlay"></div>
+                    <div class="project-info">
+                        <h3>${p.title}</h3>
+                        <a href="${detailsUrl}" class="btn btn-secondary">View Details</a>
+                    </div>
                 </div>
-            </div>
-        `;
-    });
-}
+            `;
+        });
+    }
 
-window.openModal = (desc, live, figma) => {
-    document.getElementById('modal-desc').innerText = desc;
-    const btn = document.getElementById('browser-link');
-    // Logic: Use live link, fallback to Figma
-    btn.href = live && live !== "" ? live : figma;
-    btn.innerText = live && live !== "" ? "Open Browser" : "View Figma";
-    document.getElementById('project-modal').style.display = 'flex';
-};
+    fetchProjects();
 
-loadProjects();
-</script>
+    </script>
 
 <!-- Modal Overlay -->
 <div id="project-modal" class="modal">
@@ -144,6 +156,8 @@ loadProjects();
         </div>
     </div>
 </div>
+
+<div data-include="../Assets/includes/footer.html"></div>
 
 </body>
 </html>
