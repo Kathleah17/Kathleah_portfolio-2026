@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Developer Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">K</a>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="resume.pdf" target="_blank">Resume</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button id="theme-toggle" class="theme-btn">🌙</button>
+        </div>
+    </nav>
+
+    <header class="hero-section" id="hero">
+        <div class="overlay"></div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <p class="subtitle">Web Developer</p>
+                <h1>Building clean, functional, and lightning-fast websites.</h1>
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Skills and Projects -->
+    <section class="skills-section" id="skills">
+        <div class="container">
+            <h2>Core Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-card"><h3>Frontend</h3><p>HTML5, CSS3, JavaScript, React, and semantic layouts.</p></div>
+                <div class="skill-card"><h3>Backend</h3><p>Node.js, Express, Python, PostgreSQL, and RESTful APIs.</p></div>
+                <div class="skill-card"><h3>Performance</h3><p>Webperf optimization, Git version control, and cloud deployment.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects-section" id="projects">
+        <div class="container">
+            <h2>Selected Work</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card" style="background-image: url('../Assests/img/Izaks_BG.png');">
+                    <div class="project-overlay"></div>
+                    <div class="project-info">
+                        <h3>E-Commerce Platform</h3>
+                        <p>A fast, accessible shopping experience.</p>
+                        <a href="#" class="project-link">View Project →</a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card" style="background-image: url('../Assests/img/Etransit_BG.png');">
+                    <div class="project-overlay"></div>
+                    <div class="project-info">
+                        <h3>Analytics Dashboard</h3>
+                        <p>Real-time data visualization platform.</p>
+                        <a href="#" class="project-link">View Project →</a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card" style="background-image: url('../Assests/img/Izaks_BG.png');">
+                    <div class="project-overlay"></div>
+                    <div class="project-info">
+                        <h3>E-Commerce Platform</h3>
+                        <p>A fast, accessible shopping experience.</p>
+                        <a href="#" class="project-link">View Project →</a>
+                    </div>
+                </div>
+
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="contact-section" id="contact">
+        <div class="container text-center">
+            <h2>Let's work together</h2>
+            <a href="mailto:your.email@example.com" class="email-link">your.email@example.com</a>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+import { createClient } from '@supabase/supabase-js';
+
+const supabase = createClient('YOUR_SUPABASE_URL', 'YOUR_ANON_KEY');
+
+async function loadProjects() {
+    const { data: projects } = await supabase.from('projects').select('*');
+    const grid = document.querySelector('.projects-grid');
+    
+    projects.forEach(p => {
+        grid.innerHTML += `
+            <div class="project-card" style="background-image: url('${p.image_url}')">
+                <div class="project-info">
+                    <h3>${p.title}</h3>
+                    <button class="btn" onclick="openModal('${p.description}', '${p.live_url}', '${p.figma_url}')">Open</button>
+                </div>
+            </div>
+        `;
+    });
+}
+
+window.openModal = (desc, live, figma) => {
+    document.getElementById('modal-desc').innerText = desc;
+    const btn = document.getElementById('browser-link');
+    // Logic: Use live link, fallback to Figma
+    btn.href = live && live !== "" ? live : figma;
+    btn.innerText = live && live !== "" ? "Open Browser" : "View Figma";
+    document.getElementById('project-modal').style.display = 'flex';
+};
+
+loadProjects();
+</script>
+
+<!-- Modal Overlay -->
+<div id="project-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2 id="modal-title">Project Title</h2>
+        <p id="modal-desc">Project description goes here...</p>
+        <div class="modal-actions">
+            <a id="browser-link" href="#" target="_blank" class="btn btn-primary">Open Browser</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

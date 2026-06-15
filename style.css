@@ -1,0 +1,355 @@
+/* Base Reset & Variables */
+:root {
+    --primary-color: #2563eb;
+    --text-main: #1f2937;
+    --text-muted: #4b5563;
+    --bg-main: #ffffff;
+    --bg-light: #f9fafb;
+    --bg-dark: #111827;
+    --border-color: #e5e7eb;
+    --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Dark Mode Variables */
+body.dark-theme {
+    --text-main: #f9fafb;
+    --text-muted: #d1d5db;
+    --bg-main: #111827;
+    --bg-light: #1f2937;
+    --border-color: #374151;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-stack);
+    color: var(--text-main);
+    background-color: var(--bg-main);
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* NAVIGATION */
+.navbar {
+   position: fixed;
+    top: 20px; /* Offset from top */
+    left: 50%;
+    transform: translateX(-50%); /* Centers the capsule */
+    width: 90%;
+    max-width: 1000px;
+    z-index: 1000;
+    padding: 1rem 2rem;
+    border-radius: 50px; /* Capsule shape */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Smoother animation */
+    
+
+    /* Glassmorphism Effect */
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Dark Mode Glassmorphism */
+/* Dark Mode Capsule */
+body.dark-theme .navbar {
+    background: rgba(17, 24, 39, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* The 'Shrink' Class added by JS */
+/* Shrink Animation Effect */
+.navbar.shrink {
+    padding: 0.6rem 2rem; /* Thinner */
+    background: rgba(255, 255, 255, 0.6); /* Becomes more opaque */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-theme .navbar.shrink {
+    background: rgba(17, 24, 39, 0.8);
+}
+
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+/* Optional: Ensure logo and links remain centered vertically as it shrinks */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    transition: all 0.3s ease;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.theme-btn {
+    background: none;
+    border: 1px solid var(--border-color);
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1.1rem;
+}
+
+/* SECTION 1: HERO */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    background-image: url('KathBg.png'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-section .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.85) 40%, rgba(0, 0, 0, 0.4) 100%);
+    z-index: 1;
+}
+
+.hero-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content {
+    max-width: 650px; 
+    color: #ffffff;
+}
+
+.hero-content .subtitle {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+}
+
+.hero-content .description {
+    font-size: 1.2rem;
+    color: #d1d5db;
+    margin-bottom: 2.5rem;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-secondary {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* SECTION 2 & 3: GRIDS */
+.skills-section, .projects-section {
+    padding: 6rem 0;
+    background-color: var(--bg-main);
+}
+
+.skills-section {
+    background-color: var(--bg-light);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.skill-card, .project-card {
+    background: var(--bg-main);
+    padding: 2.5rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+}
+
+/* Update this to create the scrollable row */
+.projects-grid {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto; /* Enables horizontal scroll */
+    padding-bottom: 2rem; /* Space for the scrollbar */
+    scroll-snap-type: x mandatory; /* Makes it snap to cards */
+    scrollbar-width: thin; /* Firefox scrollbar style */
+    scrollbar-color: var(--primary-color) transparent;
+}
+
+/* Chrome/Safari Scrollbar Styling */
+.projects-grid::-webkit-scrollbar {
+    height: 8px;
+}
+.projects-grid::-webkit-scrollbar-track {
+    background: transparent;
+}
+.projects-grid::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 20px;
+}
+
+
+.project-card {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    border-radius: 16px; /* Rounded corners are trendier */
+    padding: 2.5rem;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden; /* Important for the zoom effect */
+    transition: transform 0.4s ease;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    min-width: 350px; /* Forces cards to stay wide */
+    scroll-snap-align: start; /* Snaps the card to the start of the container */
+    
+}
+
+/* Zoom effect on hover */
+.project-card:hover {
+    transform: translateY(-10px);
+}
+
+/* Dark gradient overlay for text readability */
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 70%);
+    z-index: 1;
+}
+
+
+/* Ensure content sits above the overlay */
+.project-info {
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+}
+
+.project-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+}
+
+.project-info p {
+    color: #e5e7eb;
+    margin-bottom: 1rem;
+}
+
+.project-link {
+    color: #60a5fa; /* Brighter blue for visibility on dark overlay */
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    display: inline-block;
+    transition: transform 0.2s;
+}
+
+.project-link:hover {
+    transform: translateX(10px);
+}
+
+/* SECTION 4: FOOTER */
+.contact-section {
+    background-color: var(--bg-dark);
+    color: white;
+    padding: 8rem 0 4rem 0;
+}
+
+.email-link {
+    font-size: 2rem;
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .nav-links { display: none; } /* Simplified for mobile */
+    .hero-content h1 { font-size: 2.2rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .cta-buttons { flex-direction: column; }
+}
+
+.modal { display: none; position: fixed; top:0; left:0; width: 100%; height:100%; background: rgba(0,0,0,0.8); z-index: 2000; align-items: center; justify-content: center; }
+.modal-content { background: var(--bg-main); padding: 2rem; border-radius: 16px; width: 90%; max-width: 500px; color: var(--text-main); }
+.close-btn { float: right; cursor: pointer; font-size: 1.5rem; }
