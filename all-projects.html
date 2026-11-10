@@ -2,56 +2,172 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>All Projects | Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f3efe7">
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem("theme");
+                var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+                if (dark) document.documentElement.setAttribute("data-theme", "dark");
+                var meta = document.querySelector('meta[name="theme-color"]');
+                if (meta && dark) meta.setAttribute("content", "#141311");
+            } catch (err) {}
+        })();
+    </script>
+    <title>Projects | Kathleah</title>
+    <meta name="description" content="Projects by Kathleah: web screens on file, plus placeholders for Power BI, social content, and AI work.">
+    <meta name="author" content="Kathleah">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://kathleah17.github.io/Kathleah_portfolio-2026/all-projects.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Kathleah">
+    <meta property="og:title" content="Projects | Kathleah">
+    <meta property="og:description" content="Projects by Kathleah: web screens on file, plus placeholders for Power BI, social content, and AI work.">
+    <meta property="og:url" content="https://kathleah17.github.io/Kathleah_portfolio-2026/all-projects.html">
+    <meta property="og:image" content="https://kathleah17.github.io/Kathleah_portfolio-2026/Assets/img/kathleah.jpg">
+    <meta property="og:image:alt" content="Kathleah standing indoors beside a plant, wearing a dark blazer, in a black and white photograph.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Projects | Kathleah">
+    <meta name="twitter:description" content="Projects by Kathleah: web screens on file, plus placeholders for Power BI, social content, and AI work.">
+    <meta name="twitter:image" content="https://kathleah17.github.io/Kathleah_portfolio-2026/Assets/img/kathleah.jpg">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&amp;family=Outfit:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <noscript>
+        <style>.site-nav { display: block !important; position: static !important; }</style>
+    </noscript>
 
-    <!-- Header Include -->
-    <div data-include="../Assets/includes/navbar.html"></div>
-
-    <section class="container" style="padding: 150px 2rem 100px 2rem;">
-        <h1 style="margin-bottom: 3rem;">Portfolio Gallery</h1>
-        
-        <div class="projects-gallery">
-            
-            <!-- Project 1 -->
-            <div class="project-card" style="background-image: url('../Assets/img/Izaks_BG.png');">
-                <div class="project-overlay"></div>
-                <div class="project-info">
-                    <h3>E-Commerce Platform</h3>
-                    <p>A fast, accessible shopping experience built with React.</p>
-                    <a href="project-details.html?title=E-Commerce%20Platform&desc=A%20fast%20accessible%20shopping%20experience%20built%20with%20React.&live=https://your-live-link.com" class="btn btn-secondary">View Details</a>
-                </div>
-            </div>
-
-            <!-- Project 2 -->
-            <div class="project-card" style="background-image: url('../Assets/img/Etransit_BG.png');">
-                <div class="project-overlay"></div>
-                <div class="project-info">
-                    <h3>Analytics Dashboard</h3>
-                    <p>Real-time data visualization platform optimized for performance.</p>
-                    <a href="project-details.html?title=Analytics%20Dashboard&desc=Real-time%20data%20visualization%20platform%20optimized%20for%20performance.&live=https://your-live-link.com" class="btn btn-secondary">View Details</a>
-                </div>
-            </div>
-
-            <!-- Project 3 -->
-            <div class="project-card" style="background-image: url('../Assets/img/Izaks_BG.png');">
-                <div class="project-overlay"></div>
-                <div class="project-info">
-                    <h3>Finance App</h3>
-                    <p>Personal finance tracking built with Python and PostgreSQL.</p>
-                    <a href="project-details.html?title=Finance%20App&desc=Personal%20finance%20tracking%20built%20with%20Python.&figma=https://figma.com/your-link" class="btn btn-secondary">View Details</a>
-                </div>
-            </div>
-
+    <header class="site-header">
+        <div class="container header-bar">
+            <a class="logo" href="index.html">Kathleah</a>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+                <span class="menu-label">Menu</span>
+            </button>
+            <nav id="site-nav" class="site-nav" aria-label="Primary">
+                <ul class="nav-links">
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#skills">Skills</a></li>
+                    <li><a href="index.html#expertise">Expertise</a></li>
+                    <li><a href="all-projects.html" aria-current="page">Projects</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark theme">
+                <span class="theme-toggle-text">Dark</span>
+            </button>
         </div>
-    </section>
+    </header>
 
-    <!-- Footer Include -->
-    <div data-include="../Assets/includes/footer.html"></div>
+    <main id="main">
+        <section class="page-intro">
+            <div class="container">
+                <p class="eyebrow">Portfolio</p>
+                <h1>Projects</h1>
+                <p class="lead measure">Filter by web, Power BI and data, content, or AI. Two web screens are included. The other cards are placeholders until real samples are added.</p>
+                <div class="filters" role="group" aria-label="Filter projects" aria-controls="project-grid">
+                    <button type="button" class="filter-btn" data-filter="all" aria-pressed="true">All</button>
+                    <button type="button" class="filter-btn" data-filter="web" aria-pressed="false">Web</button>
+                    <button type="button" class="filter-btn" data-filter="data" aria-pressed="false">Power BI / Data</button>
+                    <button type="button" class="filter-btn" data-filter="content" aria-pressed="false">Content</button>
+                    <button type="button" class="filter-btn" data-filter="ai" aria-pressed="false">AI</button>
+                </div>
+                <div class="project-grid" id="project-grid">
+                    <article class="project-card" data-category="web">
+                        <a class="project-card-link" href="project-izaks.html">
+                            <div class="project-media">
+                                <img src="Assets/img/izaks.jpg" width="1400" height="788" alt="" loading="lazy" decoding="async">
+                            </div>
+                            <div class="project-body">
+                                <p class="kicker">Web</p>
+                                <h2>Izak’s Homemade Treats</h2>
+                                <p>A storefront screen with Home, Product, Cart, and Profile.</p>
+                                <span class="text-link">View project</span>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="project-card" data-category="web">
+                        <a class="project-card-link" href="project-etransit.html">
+                            <div class="project-media">
+                                <img src="Assets/img/etransit.jpg" width="1016" height="551" alt="" loading="lazy" decoding="async">
+                            </div>
+                            <div class="project-body">
+                                <p class="kicker">Web</p>
+                                <h2>Etransit</h2>
+                                <p>A sign-in screen with the line “Seamless Journeys, One Scan Away!”</p>
+                                <span class="text-link">View project</span>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="project-card is-placeholder" data-category="data">
+                        <a class="project-card-link" href="project-power-bi.html">
+                            <div class="project-media is-empty" aria-hidden="true">
+                                <span>TODO: add Power BI dashboard screenshot</span>
+                            </div>
+                            <div class="project-body">
+                                <p class="kicker">Power BI / Data</p>
+                                <p class="flag">Placeholder</p>
+                                <h2>TODO: Power BI dashboard title</h2>
+                                <p>TODO: describe a Power BI report or analytics piece you can show.</p>
+                                <span class="text-link">View project</span>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="project-card is-placeholder" data-category="content">
+                        <a class="project-card-link" href="project-content.html">
+                            <div class="project-media is-empty" aria-hidden="true">
+                                <span>TODO: add social content sample</span>
+                            </div>
+                            <div class="project-body">
+                                <p class="kicker">Content</p>
+                                <p class="flag">Placeholder</p>
+                                <h2>TODO: social content title</h2>
+                                <p>TODO: describe a social media content piece.</p>
+                                <span class="text-link">View project</span>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="project-card is-placeholder" data-category="ai">
+                        <a class="project-card-link" href="project-ai.html">
+                            <div class="project-media is-empty" aria-hidden="true">
+                                <span>TODO: add AI image or video sample</span>
+                            </div>
+                            <div class="project-body">
+                                <p class="kicker">AI</p>
+                                <p class="flag">Placeholder</p>
+                                <h2>TODO: AI image or video title</h2>
+                                <p>TODO: describe an AI image, video, or an AI plus Power BI example.</p>
+                                <span class="text-link">View project</span>
+                            </div>
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    <script src="../js/include.js"></script>
-    <script src="../js/script.js"></script>
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <p class="footer-name">Kathleah</p>
+                <p class="footer-role">Admin, IT Assistant, and Power BI Developer/Analyst at Lifewood Data Technology PH.</p>
+            </div>
+            <ul class="footer-links">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="all-projects.html" aria-current="page">Projects</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="https://github.com/Kathleah17" rel="noopener noreferrer">GitHub</a></li>
+            </ul>
+        </div>
+        <div class="container">
+            <p class="legal">© 2026 Kathleah</p>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
 </body>
 </html>

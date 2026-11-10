@@ -3,161 +3,339 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Developer Portfolio</title>
+    <meta name="theme-color" content="#f3efe7">
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem("theme");
+                var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+                if (dark) document.documentElement.setAttribute("data-theme", "dark");
+                var meta = document.querySelector('meta[name="theme-color"]');
+                if (meta && dark) meta.setAttribute("content", "#141311");
+            } catch (err) {}
+        })();
+    </script>
+    <title>Kathleah | Power BI, Data, Content, and Web</title>
+    <meta name="description" content="Portfolio of Kathleah, Power BI developer and analyst at Lifewood Data Technology PH. Data analytics, social content, AI, and web.">
+    <meta name="author" content="Kathleah">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://kathleah17.github.io/Kathleah_portfolio-2026/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Kathleah">
+    <meta property="og:title" content="Kathleah | Power BI, Data, Content, and Web">
+    <meta property="og:description" content="Portfolio of Kathleah, Power BI developer and analyst at Lifewood Data Technology PH. Data analytics, social content, AI, and web.">
+    <meta property="og:url" content="https://kathleah17.github.io/Kathleah_portfolio-2026/">
+    <meta property="og:image" content="https://kathleah17.github.io/Kathleah_portfolio-2026/Assets/img/kathleah.jpg">
+    <meta property="og:image:width" content="1600">
+    <meta property="og:image:height" content="900">
+    <meta property="og:image:alt" content="Kathleah standing indoors beside a plant, wearing a dark blazer, in a black and white photograph.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kathleah | Power BI, Data, Content, and Web">
+    <meta name="twitter:description" content="Portfolio of Kathleah, Power BI developer and analyst at Lifewood Data Technology PH. Data analytics, social content, AI, and web.">
+    <meta name="twitter:image" content="https://kathleah17.github.io/Kathleah_portfolio-2026/Assets/img/kathleah.jpg">
+    <meta name="twitter:image:alt" content="Kathleah standing indoors beside a plant, wearing a dark blazer, in a black and white photograph.">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preload" as="image" href="Assets/img/kathleah.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&amp;family=Outfit:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        "url": "https://kathleah17.github.io/Kathleah_portfolio-2026/",
+        "name": "Kathleah",
+        "mainEntity": {
+            "@type": "Person",
+            "name": "Kathleah",
+            "jobTitle": ["Admin", "IT Assistant", "Power BI Developer/Analyst"],
+            "worksFor": {
+                "@type": "Organization",
+                "name": "Lifewood Data Technology PH"
+            },
+            "hasCredential": {
+                "@type": "EducationalOccupationalCredential",
+                "credentialCategory": "degree",
+                "name": "BS in Information Systems"
+            },
+            "url": "https://kathleah17.github.io/Kathleah_portfolio-2026/",
+            "sameAs": ["https://github.com/Kathleah17"],
+            "knowsAbout": [
+                "Power BI",
+                "Data analytics",
+                "Social media content creation",
+                "AI image generation",
+                "AI video generation",
+                "Web development"
+            ]
+        }
+    }
+    </script>
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <noscript>
+        <style>.site-nav { display: block !important; position: static !important; }</style>
+    </noscript>
 
-<div data-include="../Assets/includes/navbar.html"></div>
-
-    <header class="hero-section" id="hero">
-        <div class="overlay"></div>
-        <div class="hero-container">
-            <div class="hero-content">
-                <p class="subtitle">Web Developer</p>
-                <h1>Building clean, functional, and lightning-fast websites.</h1>
-                <div class="cta-buttons">
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
-                </div>
-            </div>
+    <header class="site-header">
+        <div class="container header-bar">
+            <a class="logo" href="index.html">Kathleah</a>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+                <span class="menu-label">Menu</span>
+            </button>
+            <nav id="site-nav" class="site-nav" aria-label="Primary">
+                <ul class="nav-links">
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#skills">Skills</a></li>
+                    <li><a href="index.html#expertise">Expertise</a></li>
+                    <li><a href="all-projects.html">Projects</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark theme">
+                <span class="theme-toggle-text">Dark</span>
+            </button>
         </div>
     </header>
 
-    <!-- Skills and Projects -->
-    <section class="skills-section" id="skills">
-        <div class="container">
-            <h2>Core Expertise</h2>
-            <div class="skills-grid">
-                <div class="skill-card"><h3>Frontend</h3><p>HTML5, CSS3, JavaScript, React, and semantic layouts.</p></div>
-                <div class="skill-card"><h3>Backend</h3><p>Node.js, Express, Python, PostgreSQL, and RESTful APIs.</p></div>
-                <div class="skill-card"><h3>Performance</h3><p>Webperf optimization, Git version control, and cloud deployment.</p></div>
+    <main id="main">
+        <section class="hero" id="hero" aria-labelledby="hero-title">
+            <div class="container hero-grid">
+                <div>
+                    <p class="eyebrow">BS in Information Systems</p>
+                    <h1 id="hero-title">Kathleah</h1>
+                    <p class="role">Admin, IT Assistant, and Power BI Developer/Analyst</p>
+                    <p class="workplace">Lifewood Data Technology PH</p>
+                    <p class="tagline">Power BI, data analytics, social media content, and AI image and video, with web development as part of the same practice.</p>
+                    <div class="cta-row">
+                        <a class="btn" href="#projects">View projects</a>
+                        <a class="btn btn-ghost" href="#contact">Contact</a>
+                    </div>
+                </div>
+                <figure class="hero-photo">
+                    <img src="Assets/img/kathleah.jpg" width="1600" height="900" alt="Kathleah standing indoors beside a plant, wearing a dark blazer, in a black and white photograph." fetchpriority="high">
+                </figure>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="projects-section" id="projects">
-        <div class="container">
-            <h2>Selected Work</h2>
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card" style="background-image: url('../Assets/img/Izaks_BG.png');">
-                    <div class="project-overlay"></div>
-                    <div class="project-info">
-                        <h3>E-Commerce Platform</h3>
-                        <p>A fast, accessible shopping experience.</p>
-                        <a href="#" class="project-link">View Project →</a>
+        <section class="section band" id="about" aria-labelledby="about-title">
+            <div class="container">
+                <div class="section-head stack">
+                    <p class="eyebrow">About</p>
+                    <h2 id="about-title">Work across data, content, and the web</h2>
+                </div>
+                <div class="stack measure">
+                    <p>Kathleah has a BS in Information Systems. She works at Lifewood Data Technology PH as an Admin, IT Assistant, and Power BI Developer/Analyst.</p>
+                    <p>The practice covers Power BI development and analysis, data analytics, and social media content creation. It also includes AI image generation, AI video generation, and AI integrated with Power BI. Web development sits alongside that work.</p>
+                </div>
+                <dl class="fact-list">
+                    <div>
+                        <dt>Degree</dt>
+                        <dd>BS in Information Systems</dd>
                     </div>
-                </div>
-                
-                <!-- Project 2 -->
-                <div class="project-card" style="background-image: url('../Assets/img/Etransit_BG.png');">
-                    <div class="project-overlay"></div>
-                    <div class="project-info">
-                        <h3>Analytics Dashboard</h3>
-                        <p>Real-time data visualization platform.</p>
-                        <a href="#" class="project-link">View Project →</a>
+                    <div>
+                        <dt>Employer</dt>
+                        <dd>Lifewood Data Technology PH</dd>
                     </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-card" style="background-image: url('../Assets/img/Izaks_BG.png');">
-                    <div class="project-overlay"></div>
-                    <div class="project-info">
-                        <h3>E-Commerce Platform</h3>
-                        <p>A fast, accessible shopping experience.</p>
-                        <a href="#" class="project-link">View Project →</a>
+                    <div class="fact-wide">
+                        <dt>Roles</dt>
+                        <dd>Admin, IT Assistant, and Power BI Developer/Analyst</dd>
                     </div>
-                </div>
-
-
-                </div>
-
-
-
+                </dl>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <script src="../js/include.js"></script>
-    <script src="../js/script.js"></script> 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script>
-
-        // Function to handle the opening of the modal
-    window.openModal = (title, desc, liveUrl, figmaUrl) => {
-        const modal = document.getElementById('project-modal');
-        const titleEl = document.getElementById('modal-title');
-        const descEl = document.getElementById('modal-desc');
-        const linkEl = document.getElementById('action-link');
-
-        titleEl.innerText = title;
-        descEl.innerText = desc;
-
-        // Smart Linking Logic
-        if (liveUrl && liveUrl !== "null" && liveUrl !== "") {
-            linkEl.href = liveUrl;
-            linkEl.innerText = "Open Browser";
-        } else {
-            linkEl.href = figmaUrl;
-            linkEl.innerText = "View Figma Presentation";
-        }
-
-        modal.style.display = 'flex';
-    };
-
-    // Function to close modal
-    window.closeModal = () => {
-        document.getElementById('project-modal').style.display = 'none';
-    };
-
-    // Close modal if clicking outside the box
-    window.onclick = (event) => {
-        const modal = document.getElementById('project-modal');
-        if (event.target == modal) closeModal();
-    };
-
-    // Fetching from Supabase
-    // Replace the fetchProjects logic in your index.html script
-    async function fetchProjects() {
-        const supabase = supabase.createClient('YOUR_SUPABASE_URL', 'YOUR_SUPABASE_ANON_KEY');
-        const { data: projects } = await supabase.from('projects').select('*');
-        
-        const grid = document.querySelector('.projects-grid');
-        grid.innerHTML = ''; 
-
-        projects.forEach(p => {
-            // Construct the URL with parameters
-            const detailsUrl = `project-details.html?title=${encodeURIComponent(p.title)}&desc=${encodeURIComponent(p.description)}&live=${p.live_url}&figma=${p.figma_url}`;
-            
-            grid.innerHTML += `
-                <div class="project-card" style="background-image: url('${p.image_url}')">
-                    <div class="project-overlay"></div>
-                    <div class="project-info">
-                        <h3>${p.title}</h3>
-                        <a href="${detailsUrl}" class="btn btn-secondary">View Details</a>
-                    </div>
+        <section class="section" id="skills" aria-labelledby="skills-title">
+            <div class="container">
+                <!-- TODO: add named tools only when you want them public. None beyond these areas were documented in the repo. -->
+                <div class="section-head stack">
+                    <p class="eyebrow">Skills</p>
+                    <h2 id="skills-title">Grouped by the work itself</h2>
+                    <p class="lead">Web development is one group among the others, not the whole site.</p>
                 </div>
-            `;
-        });
-    }
+                <div class="card-grid">
+                    <article class="skill-card">
+                        <h3>Power BI and data</h3>
+                        <ul>
+                            <li>Power BI development</li>
+                            <li>Power BI analysis</li>
+                            <li>Data analytics</li>
+                            <li>AI integrated with Power BI</li>
+                        </ul>
+                    </article>
+                    <article class="skill-card">
+                        <h3>Artificial intelligence</h3>
+                        <ul>
+                            <li>AI image generation</li>
+                            <li>AI video generation</li>
+                            <li>AI integrated with Power BI</li>
+                        </ul>
+                    </article>
+                    <article class="skill-card">
+                        <h3>Content</h3>
+                        <ul>
+                            <li>Social media content creation</li>
+                        </ul>
+                    </article>
+                    <article class="skill-card">
+                        <h3>Web development</h3>
+                        <ul>
+                            <li>HTML, CSS, and JavaScript</li>
+                            <li>Pages like this portfolio and the web screens below</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-    fetchProjects();
+        <section class="section band" id="expertise" aria-labelledby="expertise-title">
+            <div class="container">
+                <div class="section-head stack">
+                    <p class="eyebrow">Expertise</p>
+                    <h2 id="expertise-title">What the work covers</h2>
+                </div>
+                <div class="card-grid">
+                    <article class="expertise-card">
+                        <h3>Power BI and data analytics</h3>
+                        <p>Power BI development and analysis, and data analytics more broadly. This includes AI integrated with Power BI.</p>
+                    </article>
+                    <article class="expertise-card">
+                        <h3>Social media content</h3>
+                        <p>Social media content creation.</p>
+                    </article>
+                    <article class="expertise-card">
+                        <h3>AI image and video</h3>
+                        <p>AI image generation and AI video generation, plus AI used together with Power BI.</p>
+                    </article>
+                    <article class="expertise-card">
+                        <h3>Web development</h3>
+                        <p>Web pages in HTML, CSS, and JavaScript, including this site and the web screens in Projects.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-    </script>
+        <section class="section" id="projects" aria-labelledby="projects-title">
+            <div class="container">
+                <div class="section-head">
+                    <p class="eyebrow">Projects</p>
+                    <h2 id="projects-title">Selected work</h2>
+                    <p class="note">Izak’s Homemade Treats and Etransit are the two web screens already in this site. Cards marked Placeholder are waiting for real Power BI, content, or AI samples.</p>
+                </div>
+                <div class="filters" role="group" aria-label="Filter projects" aria-controls="project-grid">
+                    <button type="button" class="filter-btn" data-filter="all" aria-pressed="true">All</button>
+                    <button type="button" class="filter-btn" data-filter="web" aria-pressed="false">Web</button>
+                    <button type="button" class="filter-btn" data-filter="data" aria-pressed="false">Power BI / Data</button>
+                    <button type="button" class="filter-btn" data-filter="content" aria-pressed="false">Content</button>
+                    <button type="button" class="filter-btn" data-filter="ai" aria-pressed="false">AI</button>
+                </div>
+                <div class="project-grid" id="project-grid">
+                    <article class="project-card" data-category="web">
+                        <a class="project-card-link" href="project-izaks.html">
+                            <div class="project-media">
+                                <img src="Assets/img/izaks.jpg" width="1400" height="788" alt="" loading="lazy" decoding="async">
+                            </div>
+                            <div class="project-body">
+                                <p class="kicker">Web</p>
+                                <h3>Izak’s Homemade Treats</h3>
+                                <p>A storefront screen with Home, Product, Cart, and Profile.</p>
+                                <span class="text-link">View project</span>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="project-card" data-category="web">
+                        <a class="project-card-link" href="project-etransit.html">
+                            <div class="project-media">
+                                <img src="Assets/img/etransit.jpg" width="1016" height="551" alt="" loading="lazy" decoding="async">
+                            </div>
+                            <div class="project-body">
+                                <p class="kicker">Web</p>
+                                <h3>Etransit</h3>
+                                <p>A sign-in screen with the line “Seamless Journeys, One Scan Away!”</p>
+                                <span class="text-link">View project</span>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="project-card is-placeholder" data-category="data">
+                        <a class="project-card-link" href="project-power-bi.html">
+                            <div class="project-media is-empty" aria-hidden="true">
+                                <span>TODO: add Power BI dashboard screenshot</span>
+                            </div>
+                            <div class="project-body">
+                                <p class="kicker">Power BI / Data</p>
+                                <p class="flag">Placeholder</p>
+                                <h3>TODO: Power BI dashboard title</h3>
+                                <p>TODO: describe a Power BI report or analytics piece you can show.</p>
+                                <span class="text-link">View project</span>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="project-card is-placeholder" data-category="content">
+                        <a class="project-card-link" href="project-content.html">
+                            <div class="project-media is-empty" aria-hidden="true">
+                                <span>TODO: add social content sample</span>
+                            </div>
+                            <div class="project-body">
+                                <p class="kicker">Content</p>
+                                <p class="flag">Placeholder</p>
+                                <h3>TODO: social content title</h3>
+                                <p>TODO: describe a social media content piece.</p>
+                                <span class="text-link">View project</span>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="project-card is-placeholder" data-category="ai">
+                        <a class="project-card-link" href="project-ai.html">
+                            <div class="project-media is-empty" aria-hidden="true">
+                                <span>TODO: add AI image or video sample</span>
+                            </div>
+                            <div class="project-body">
+                                <p class="kicker">AI</p>
+                                <p class="flag">Placeholder</p>
+                                <h3>TODO: AI image or video title</h3>
+                                <p>TODO: describe an AI image, video, or an AI plus Power BI example.</p>
+                                <span class="text-link">View project</span>
+                            </div>
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-<!-- Modal Overlay -->
-<div id="project-modal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <h2 id="modal-title">Project Title</h2>
-        <p id="modal-desc">Project description goes here...</p>
-        <div class="modal-actions">
-            <a id="browser-link" href="#" target="_blank" class="btn btn-primary">Open Browser</a>
+        <section class="section contact-band" id="contact" aria-labelledby="contact-title">
+            <div class="container narrow stack">
+                <p class="eyebrow">Contact</p>
+                <h2 id="contact-title">Get in touch</h2>
+                <p class="lead">Kathleah works at Lifewood Data Technology PH. A public email is not listed here yet.</p>
+                <ul class="todo-list">
+                    <li>TODO: add email</li>
+                    <li>TODO: add resume.pdf at the site root and link it here</li>
+                    <li>TODO: add any other profile links you want published</li>
+                </ul>
+                <p><a class="btn" href="https://github.com/Kathleah17" rel="noopener noreferrer">GitHub profile</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <p class="footer-name">Kathleah</p>
+                <p class="footer-role">Admin, IT Assistant, and Power BI Developer/Analyst at Lifewood Data Technology PH.</p>
+            </div>
+            <ul class="footer-links">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="all-projects.html">Projects</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="https://github.com/Kathleah17" rel="noopener noreferrer">GitHub</a></li>
+            </ul>
         </div>
-    </div>
-</div>
-
-<div data-include="../Assets/includes/footer.html"></div>
-
+        <div class="container">
+            <p class="legal">© 2026 Kathleah</p>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
 </body>
 </html>

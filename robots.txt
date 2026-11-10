@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kathleah17.github.io/Kathleah_portfolio-2026/sitemap.xml
