@@ -68,21 +68,87 @@
         else if (desktop.addListener) desktop.addListener(closeOnDesktop);
     }
 
-    document.querySelectorAll(".filters").forEach(function (group) {
-        var gridId = group.getAttribute("aria-controls");
-        var grid = gridId ? document.getElementById(gridId) : null;
-        if (!grid) return;
+    document.querySelectorAll(".folder-browser").forEach(function (browser) {
+        var tabs = Array.prototype.slice.call(browser.querySelectorAll('[role="tab"]'));
+        var motion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-        group.querySelectorAll(".filter-btn").forEach(function (btn) {
-            btn.addEventListener("click", function () {
-                var filter = btn.getAttribute("data-filter");
-                group.querySelectorAll(".filter-btn").forEach(function (other) {
-                    other.setAttribute("aria-pressed", other === btn ? "true" : "false");
+        function panelFor(tab) {
+            var id = tab.getAttribute("aria-controls");
+            return id ? document.getElementById(id) : null;
+        }
+
+        function select(next, moveFocus) {
+            var current = null;
+            tabs.forEach(function (tab) {
+                if (tab.getAttribute("aria-selected") === "true") current = tab;
+            });
+            if (!next || next === current) {
+                if (moveFocus && next) next.focus();
+                return;
+            }
+
+            var currentPanel = current ? panelFor(current) : null;
+            var nextPanel = panelFor(next);
+
+            function apply() {
+                tabs.forEach(function (tab) {
+                    var on = tab === next;
+                    tab.setAttribute("aria-selected", on ? "true" : "false");
+                    tab.tabIndex = on ? 0 : -1;
+                    var panel = panelFor(tab);
+                    if (!panel) return;
+                    panel.hidden = !on;
                 });
-                grid.querySelectorAll("[data-category]").forEach(function (card) {
-                    var show = filter === "all" || card.getAttribute("data-category") === filter;
-                    card.hidden = !show;
+                if (moveFocus) next.focus();
+            }
+
+            if (!currentPanel || !nextPanel || motion.matches) {
+                apply();
+                return;
+            }
+
+            var finished = false;
+            function finish() {
+                if (finished) return;
+                finished = true;
+                currentPanel.classList.remove("is-leaving");
+                nextPanel.classList.add("is-entering");
+                apply();
+                window.requestAnimationFrame(function () {
+                    window.requestAnimationFrame(function () {
+                        nextPanel.classList.remove("is-entering");
+                    });
                 });
+            }
+
+            currentPanel.classList.add("is-leaving");
+            currentPanel.addEventListener("transitionend", function (event) {
+                if (event.propertyName === "opacity") finish();
+            });
+            window.setTimeout(finish, 280);
+        }
+
+        tabs.forEach(function (tab, index) {
+            tab.addEventListener("click", function () {
+                select(tab, false);
+            });
+            tab.addEventListener("keydown", function (event) {
+                var key = event.key;
+                var delta = 0;
+                if (key === "ArrowRight" || key === "ArrowDown") delta = 1;
+                else if (key === "ArrowLeft" || key === "ArrowUp") delta = -1;
+                else if (key === "Home") {
+                    event.preventDefault();
+                    select(tabs[0], true);
+                    return;
+                } else if (key === "End") {
+                    event.preventDefault();
+                    select(tabs[tabs.length - 1], true);
+                    return;
+                }
+                if (!delta) return;
+                event.preventDefault();
+                select(tabs[(index + delta + tabs.length) % tabs.length], true);
             });
         });
     });

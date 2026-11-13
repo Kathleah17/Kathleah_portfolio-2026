@@ -222,84 +222,111 @@
                 <div class="section-head">
                     <p class="eyebrow">Projects</p>
                     <h2 id="projects-title">Selected work</h2>
-                    <p class="note">Izak’s Homemade Treats and Etransit are the two web screens already in this site. Cards marked Placeholder are waiting for real Power BI, content, or AI samples.</p>
+                    <p class="note">Open a folder to see that group. Development has the two web screens. PBI Development and Other Skills are waiting on real samples.</p>
                 </div>
-                <div class="filters" role="group" aria-label="Filter projects" aria-controls="project-grid">
-                    <button type="button" class="filter-btn" data-filter="all" aria-pressed="true">All</button>
-                    <button type="button" class="filter-btn" data-filter="web" aria-pressed="false">Web</button>
-                    <button type="button" class="filter-btn" data-filter="data" aria-pressed="false">Power BI / Data</button>
-                    <button type="button" class="filter-btn" data-filter="content" aria-pressed="false">Content</button>
-                    <button type="button" class="filter-btn" data-filter="ai" aria-pressed="false">AI</button>
-                </div>
-                <div class="project-grid" id="project-grid">
-                    <article class="project-card" data-category="web">
-                        <a class="project-card-link" href="project-izaks.html">
-                            <div class="project-media">
-                                <img src="Assets/img/izaks.jpg" width="1400" height="788" alt="" loading="lazy" decoding="async">
+                <div class="folder-browser">
+                    <div class="folder-tabs" role="tablist" aria-label="Project folders">
+                        <button class="folder-tab" type="button" role="tab" id="folder-tab-development" aria-controls="folder-panel-development" aria-selected="true">
+                            <span class="folder-tab-name">Development</span>
+                            <span class="folder-count">2</span>
+                        </button>
+                        <button class="folder-tab" type="button" role="tab" id="folder-tab-pbi" aria-controls="folder-panel-pbi" aria-selected="false" tabindex="-1">
+                            <span class="folder-tab-name">PBI Development</span>
+                            <span class="folder-count">1</span>
+                        </button>
+                        <button class="folder-tab" type="button" role="tab" id="folder-tab-other" aria-controls="folder-panel-other" aria-selected="false" tabindex="-1">
+                            <span class="folder-tab-name">Other Skills</span>
+                            <span class="folder-count">2</span>
+                        </button>
+                    </div>
+                    <div class="folder-stage">
+                        <div class="folder-panel" role="tabpanel" id="folder-panel-development" aria-labelledby="folder-tab-development">
+                            <p class="folder-lead">Web screens already in this site.</p>
+                            <div class="project-grid">
+                                <article class="project-card" data-category="development">
+                                    <a class="project-card-link" href="project-izaks.html">
+                                        <div class="project-media">
+                                            <img src="Assets/img/izaks.jpg" width="1400" height="788" alt="" loading="lazy" decoding="async">
+                                        </div>
+                                        <div class="project-body">
+                                            <p class="kicker">Development</p>
+                                            <h3>Izak’s Homemade Treats</h3>
+                                            <p>A storefront screen with Home, Product, Cart, and Profile.</p>
+                                            <span class="text-link">View project</span>
+                                        </div>
+                                    </a>
+                                </article>
+                                <article class="project-card" data-category="development">
+                                    <a class="project-card-link" href="project-etransit.html">
+                                        <div class="project-media">
+                                            <img src="Assets/img/etransit.jpg" width="1016" height="551" alt="" loading="lazy" decoding="async">
+                                        </div>
+                                        <div class="project-body">
+                                            <p class="kicker">Development</p>
+                                            <h3>Etransit</h3>
+                                            <p>A sign-in screen with the line “Seamless Journeys, One Scan Away!”</p>
+                                            <span class="text-link">View project</span>
+                                        </div>
+                                    </a>
+                                </article>
                             </div>
-                            <div class="project-body">
-                                <p class="kicker">Web</p>
-                                <h3>Izak’s Homemade Treats</h3>
-                                <p>A storefront screen with Home, Product, Cart, and Profile.</p>
-                                <span class="text-link">View project</span>
+                        </div>
+                        <div class="folder-panel" role="tabpanel" id="folder-panel-pbi" aria-labelledby="folder-tab-pbi" hidden>
+                            <p class="folder-lead">Power BI development and analysis. A report is not in the repo yet.</p>
+                            <div class="project-grid">
+                                <article class="project-card is-placeholder" data-category="pbi">
+                                    <a class="project-card-link" href="project-power-bi.html">
+                                        <div class="project-media is-empty" aria-hidden="true">
+                                            <span>TODO: add Power BI dashboard screenshot</span>
+                                        </div>
+                                        <div class="project-body">
+                                            <p class="kicker">PBI Development</p>
+                                            <p class="flag">Placeholder</p>
+                                            <h3>TODO: Power BI dashboard title</h3>
+                                            <p>TODO: describe a Power BI report or analytics piece you can show.</p>
+                                            <span class="text-link">View project</span>
+                                        </div>
+                                    </a>
+                                </article>
                             </div>
-                        </a>
-                    </article>
-                    <article class="project-card" data-category="web">
-                        <a class="project-card-link" href="project-etransit.html">
-                            <div class="project-media">
-                                <img src="Assets/img/etransit.jpg" width="1016" height="551" alt="" loading="lazy" decoding="async">
+                        </div>
+                        <div class="folder-panel" role="tabpanel" id="folder-panel-other" aria-labelledby="folder-tab-other" hidden>
+                            <p class="folder-lead">Content creation, AI image and video, and similar work. Samples are not in the repo yet.</p>
+                            <div class="project-grid">
+                                <article class="project-card is-placeholder" data-category="other">
+                                    <a class="project-card-link" href="project-content.html">
+                                        <div class="project-media is-empty" aria-hidden="true">
+                                            <span>TODO: add social content sample</span>
+                                        </div>
+                                        <div class="project-body">
+                                            <p class="kicker">Content</p>
+                                            <p class="flag">Placeholder</p>
+                                            <h3>TODO: social content title</h3>
+                                            <p>TODO: describe a social media content piece.</p>
+                                            <span class="text-link">View project</span>
+                                        </div>
+                                    </a>
+                                </article>
+                                <article class="project-card is-placeholder" data-category="other">
+                                    <a class="project-card-link" href="project-ai.html">
+                                        <div class="project-media is-empty" aria-hidden="true">
+                                            <span>TODO: add AI image or video sample</span>
+                                        </div>
+                                        <div class="project-body">
+                                            <p class="kicker">AI</p>
+                                            <p class="flag">Placeholder</p>
+                                            <h3>TODO: AI image or video title</h3>
+                                            <p>TODO: describe an AI image, video, or an AI plus Power BI example.</p>
+                                            <span class="text-link">View project</span>
+                                        </div>
+                                    </a>
+                                </article>
                             </div>
-                            <div class="project-body">
-                                <p class="kicker">Web</p>
-                                <h3>Etransit</h3>
-                                <p>A sign-in screen with the line “Seamless Journeys, One Scan Away!”</p>
-                                <span class="text-link">View project</span>
-                            </div>
-                        </a>
-                    </article>
-                    <article class="project-card is-placeholder" data-category="data">
-                        <a class="project-card-link" href="project-power-bi.html">
-                            <div class="project-media is-empty" aria-hidden="true">
-                                <span>TODO: add Power BI dashboard screenshot</span>
-                            </div>
-                            <div class="project-body">
-                                <p class="kicker">Power BI / Data</p>
-                                <p class="flag">Placeholder</p>
-                                <h3>TODO: Power BI dashboard title</h3>
-                                <p>TODO: describe a Power BI report or analytics piece you can show.</p>
-                                <span class="text-link">View project</span>
-                            </div>
-                        </a>
-                    </article>
-                    <article class="project-card is-placeholder" data-category="content">
-                        <a class="project-card-link" href="project-content.html">
-                            <div class="project-media is-empty" aria-hidden="true">
-                                <span>TODO: add social content sample</span>
-                            </div>
-                            <div class="project-body">
-                                <p class="kicker">Content</p>
-                                <p class="flag">Placeholder</p>
-                                <h3>TODO: social content title</h3>
-                                <p>TODO: describe a social media content piece.</p>
-                                <span class="text-link">View project</span>
-                            </div>
-                        </a>
-                    </article>
-                    <article class="project-card is-placeholder" data-category="ai">
-                        <a class="project-card-link" href="project-ai.html">
-                            <div class="project-media is-empty" aria-hidden="true">
-                                <span>TODO: add AI image or video sample</span>
-                            </div>
-                            <div class="project-body">
-                                <p class="kicker">AI</p>
-                                <p class="flag">Placeholder</p>
-                                <h3>TODO: AI image or video title</h3>
-                                <p>TODO: describe an AI image, video, or an AI plus Power BI example.</p>
-                                <span class="text-link">View project</span>
-                            </div>
-                        </a>
-                    </article>
+                        </div>
+                    </div>
+                    <noscript>
+                        <p class="note">Folders switch with JavaScript. Every project is linked here: <a href="project-izaks.html">Izak’s Homemade Treats</a>, <a href="project-etransit.html">Etransit</a>, <a href="project-power-bi.html">Power BI placeholder</a>, <a href="project-content.html">content placeholder</a>, <a href="project-ai.html">AI placeholder</a>.</p>
+                    </noscript>
                 </div>
             </div>
         </section>
