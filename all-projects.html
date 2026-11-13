@@ -69,11 +69,11 @@
             <div class="container">
                 <p class="eyebrow">Portfolio</p>
                 <h1>Projects</h1>
-                <p class="lead measure">Open a folder to browse Development, PBI Development, or Other Skills. Two web screens are included. The other cards are placeholders until real samples are added.</p>
-                <div class="folder-browser">
+                <p class="lead measure">Open a folder to browse Web &amp; App Development, PBI Development, or Other Skills. Saved screens are included. Other cards are placeholders until real samples are added.</p>
+                <div class="folder-browser" data-card-heading="h2">
                     <div class="folder-tabs" role="tablist" aria-label="Project folders">
                         <button class="folder-tab" type="button" role="tab" id="folder-tab-development" aria-controls="folder-panel-development" aria-selected="true">
-                            <span class="folder-tab-name">Development</span>
+                            <span class="folder-tab-name">Web &amp; App Development</span>
                             <span class="folder-count">2</span>
                         </button>
                         <button class="folder-tab" type="button" role="tab" id="folder-tab-pbi" aria-controls="folder-panel-pbi" aria-selected="false" tabindex="-1">
@@ -86,92 +86,21 @@
                         </button>
                     </div>
                     <div class="folder-stage">
-                        <div class="folder-panel" role="tabpanel" id="folder-panel-development" aria-labelledby="folder-tab-development">
+                        <div class="folder-panel" role="tabpanel" id="folder-panel-development" aria-labelledby="folder-tab-development" data-project-folder="development">
                             <p class="folder-lead">Web screens already in this site.</p>
-                            <div class="project-grid">
-                                <article class="project-card" data-category="development">
-                                    <a class="project-card-link" href="project-izaks.html">
-                                        <div class="project-media">
-                                            <img src="Assets/img/izaks.jpg" width="1400" height="788" alt="" loading="lazy" decoding="async">
-                                        </div>
-                                        <div class="project-body">
-                                            <p class="kicker">Development</p>
-                                            <h2>Izak’s Homemade Treats</h2>
-                                            <p>A storefront screen with Home, Product, Cart, and Profile.</p>
-                                            <span class="text-link">View project</span>
-                                        </div>
-                                    </a>
-                                </article>
-                                <article class="project-card" data-category="development">
-                                    <a class="project-card-link" href="project-etransit.html">
-                                        <div class="project-media">
-                                            <img src="Assets/img/etransit.jpg" width="1016" height="551" alt="" loading="lazy" decoding="async">
-                                        </div>
-                                        <div class="project-body">
-                                            <p class="kicker">Development</p>
-                                            <h2>Etransit</h2>
-                                            <p>A sign-in screen with the line “Seamless Journeys, One Scan Away!”</p>
-                                            <span class="text-link">View project</span>
-                                        </div>
-                                    </a>
-                                </article>
-                            </div>
+                            <div class="project-grid"></div>
                         </div>
-                        <div class="folder-panel" role="tabpanel" id="folder-panel-pbi" aria-labelledby="folder-tab-pbi" hidden>
+                        <div class="folder-panel" role="tabpanel" id="folder-panel-pbi" aria-labelledby="folder-tab-pbi" data-project-folder="pbi" hidden>
                             <p class="folder-lead">Power BI development and analysis. A report is not in the repo yet.</p>
-                            <div class="project-grid">
-                                <article class="project-card is-placeholder" data-category="pbi">
-                                    <a class="project-card-link" href="project-power-bi.html">
-                                        <div class="project-media is-empty" aria-hidden="true">
-                                            <span>TODO: add Power BI dashboard screenshot</span>
-                                        </div>
-                                        <div class="project-body">
-                                            <p class="kicker">PBI Development</p>
-                                            <p class="flag">Placeholder</p>
-                                            <h2>TODO: Power BI dashboard title</h2>
-                                            <p>TODO: describe a Power BI report or analytics piece you can show.</p>
-                                            <span class="text-link">View project</span>
-                                        </div>
-                                    </a>
-                                </article>
-                            </div>
+                            <div class="project-grid"></div>
                         </div>
-                        <div class="folder-panel" role="tabpanel" id="folder-panel-other" aria-labelledby="folder-tab-other" hidden>
+                        <div class="folder-panel" role="tabpanel" id="folder-panel-other" aria-labelledby="folder-tab-other" data-project-folder="other" hidden>
                             <p class="folder-lead">Content creation, AI image and video, and similar work. Samples are not in the repo yet.</p>
-                            <div class="project-grid">
-                                <article class="project-card is-placeholder" data-category="other">
-                                    <a class="project-card-link" href="project-content.html">
-                                        <div class="project-media is-empty" aria-hidden="true">
-                                            <span>TODO: add social content sample</span>
-                                        </div>
-                                        <div class="project-body">
-                                            <p class="kicker">Content</p>
-                                            <p class="flag">Placeholder</p>
-                                            <h2>TODO: social content title</h2>
-                                            <p>TODO: describe a social media content piece.</p>
-                                            <span class="text-link">View project</span>
-                                        </div>
-                                    </a>
-                                </article>
-                                <article class="project-card is-placeholder" data-category="other">
-                                    <a class="project-card-link" href="project-ai.html">
-                                        <div class="project-media is-empty" aria-hidden="true">
-                                            <span>TODO: add AI image or video sample</span>
-                                        </div>
-                                        <div class="project-body">
-                                            <p class="kicker">AI</p>
-                                            <p class="flag">Placeholder</p>
-                                            <h2>TODO: AI image or video title</h2>
-                                            <p>TODO: describe an AI image, video, or an AI plus Power BI example.</p>
-                                            <span class="text-link">View project</span>
-                                        </div>
-                                    </a>
-                                </article>
-                            </div>
+                            <div class="project-grid"></div>
                         </div>
                     </div>
                     <noscript>
-                        <p class="note">Folders switch with JavaScript. Every project is linked here: <a href="project-izaks.html">Izak’s Homemade Treats</a>, <a href="project-etransit.html">Etransit</a>, <a href="project-power-bi.html">Power BI placeholder</a>, <a href="project-content.html">content placeholder</a>, <a href="project-ai.html">AI placeholder</a>.</p>
+                        <p class="note">Folders switch with JavaScript. Every project is linked here: <a href="project-izaks.html">Izak’s Homemade Treats</a>, <a href="project-etransit.html">Etransit</a>, <a href="project-power-bi.html">Power BI placeholder</a>, <a href="project-content.html">content placeholder</a>, <a href="project-gojobfair.html">GoJobFair App</a>, <a href="project-ai.html">AI placeholder</a>.</p>
                     </noscript>
                 </div>
             </div>
@@ -182,7 +111,7 @@
         <div class="container footer-grid">
             <div>
                 <p class="footer-name">Kathleah</p>
-                <p class="footer-role">Admin, IT Assistant, and Power BI Developer/Analyst at Lifewood Data Technology PH.</p>
+                <p class="footer-role">Admin, IT support, Power BI, data analytics, web and app development, content, and AI.</p>
             </div>
             <ul class="footer-links">
                 <li><a href="index.html#about">About</a></li>
@@ -192,9 +121,14 @@
             </ul>
         </div>
         <div class="container">
-            <p class="legal">© 2026 Kathleah</p>
+            <p class="legal">© 2026 Kathleah · <a href="admin.html">Admin</a></p>
         </div>
     </footer>
+    <script src="js/supabase-config.js"></script>
+    <script src="js/site-data.js"></script>
+    <script src="js/contact.js"></script>
+    <script src="js/projects.js"></script>
+    <script src="js/content-loader.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

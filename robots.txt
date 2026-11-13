@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /Kathleah_portfolio-2026/admin.html
 
 Sitemap: https://kathleah17.github.io/Kathleah_portfolio-2026/sitemap.xml
