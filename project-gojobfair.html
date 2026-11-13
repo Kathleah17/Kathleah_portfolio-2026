@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f3efe7">
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem("theme");
+                var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+                if (dark) document.documentElement.setAttribute("data-theme", "dark");
+                var meta = document.querySelector('meta[name="theme-color"]');
+                if (meta && dark) meta.setAttribute("content", "#141311");
+            } catch (err) {}
+        })();
+    </script>
+    <title>GoJobFair App | Kathleah</title>
+    <meta name="description" content="Placeholder for the GoJobFair app, a web and mobile project using Dart and JavaScript.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://kathleah17.github.io/Kathleah_portfolio-2026/project-gojobfair.html">
+    <meta property="og:title" content="GoJobFair App | Kathleah">
+    <meta property="og:description" content="Placeholder for the GoJobFair app, a web and mobile project using Dart and JavaScript.">
+    <meta property="og:url" content="https://kathleah17.github.io/Kathleah_portfolio-2026/project-gojobfair.html">
+    <meta property="og:image" content="https://kathleah17.github.io/Kathleah_portfolio-2026/Assets/img/headshot.jpg">
+    <meta property="og:image:alt" content="Kathleah smiling at the camera, with long dark hair, a grey blazer, a white top, pearl earrings, and a silver necklace.">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&amp;family=Outfit:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-project-id="gojobfair">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <noscript>
+        <style>.site-nav { display: block !important; position: static !important; }</style>
+    </noscript>
+    <header class="site-header">
+        <div class="container header-bar">
+            <a class="logo" href="index.html">Kathleah</a>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+                <span class="menu-label">Menu</span>
+            </button>
+            <nav id="site-nav" class="site-nav" aria-label="Primary">
+                <ul class="nav-links">
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#skills">Skills</a></li>
+                    <li><a href="index.html#expertise">Expertise</a></li>
+                    <li><a href="all-projects.html" aria-current="page">Projects</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark theme">
+                <span class="theme-toggle-text">Dark</span>
+            </button>
+        </div>
+    </header>
+    <main id="main">
+        <article class="detail">
+            <div class="container narrow">
+                <p><a class="back-link" href="all-projects.html">Back to all projects</a></p>
+                <p class="kicker">Web &amp; App Development</p>
+                <p class="flag">Placeholder</p>
+                <h1>GoJobFair App</h1>
+                <div class="stack">
+                    <p>A web and mobile app. The stack named so far is Dart and JavaScript.</p>
+                    <p>TODO: confirm whether the Dart work is Flutter.</p>
+                    <p>TODO: describe the GoJobFair app. Features, screenshots, and links are not in the repo yet.</p>
+                </div>
+                <ul class="tech-row" aria-label="Tech stack">
+                    <li>Dart</li>
+                    <li>JavaScript</li>
+                    <li class="is-todo">TODO: confirm whether the Dart work is Flutter</li>
+                </ul>
+                <div class="project-media is-empty detail-fallback" role="img" aria-label="TODO: add GoJobFair screenshot">
+                    <p>TODO: add GoJobFair screenshot</p>
+                </div>
+                <div class="todo-panel">
+                    <h2>Still to add</h2>
+                    <ul class="todo-list">
+                        <li>TODO: describe the GoJobFair app</li>
+                        <li>TODO: add GoJobFair screenshot</li>
+                        <li>TODO: add GoJobFair link</li>
+                        <li>TODO: confirm whether the Dart work is Flutter</li>
+                        <li>TODO: add experience on GoJobFair</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+        <section class="section band" aria-labelledby="more-heading">
+            <div class="container">
+                <h2 id="more-heading">More projects</h2>
+                <ul class="more-list">
+                    <li><a href="project-izaks.html">Izak’s Homemade Treats <span>Web &amp; App Development</span></a></li>
+                    <li><a href="project-etransit.html">Etransit <span>Web &amp; App Development</span></a></li>
+                    <li><a href="project-power-bi.html">TODO: Power BI dashboard title <span>PBI Development</span></a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <p class="footer-name">Kathleah</p>
+                <p class="footer-role">Admin, IT support, Power BI, data analytics, web and app development, content, and AI.</p>
+            </div>
+            <ul class="footer-links">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="all-projects.html" aria-current="page">Projects</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="https://github.com/Kathleah17" rel="noopener noreferrer">GitHub</a></li>
+            </ul>
+        </div>
+        <div class="container">
+            <p class="legal">© 2026 Kathleah · <a href="admin.html">Admin</a></p>
+        </div>
+    </footer>
+    <script src="js/supabase-config.js"></script>
+    <script src="js/site-data.js"></script>
+    <script src="js/projects.js"></script>
+    <script src="js/content-loader.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
