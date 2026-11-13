@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f3efe7">
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem("theme");
+                var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+                if (dark) document.documentElement.setAttribute("data-theme", "dark");
+                var meta = document.querySelector('meta[name="theme-color"]');
+                if (meta && dark) meta.setAttribute("content", "#141311");
+            } catch (err) {}
+        })();
+    </script>
+    <title>Etransit | Kathleah</title>
+    <meta name="description" content="Etransit, a sign-in screen in Kathleah’s portfolio, with the line Seamless Journeys, One Scan Away!">
+    <meta name="author" content="Kathleah">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://kathleah17.github.io/Kathleah_portfolio-2026/project-etransit.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Kathleah">
+    <meta property="og:title" content="Etransit | Kathleah">
+    <meta property="og:description" content="Etransit, a sign-in screen in Kathleah’s portfolio, with the line Seamless Journeys, One Scan Away!">
+    <meta property="og:url" content="https://kathleah17.github.io/Kathleah_portfolio-2026/project-etransit.html">
+    <meta property="og:image" content="https://kathleah17.github.io/Kathleah_portfolio-2026/Assets/img/etransit.jpg">
+    <meta property="og:image:alt" content="Etransit sign-in screen with a coach on a highway and buttons for Google, Facebook, Apple, login, and sign up.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Etransit | Kathleah">
+    <meta name="twitter:description" content="Etransit, a sign-in screen in Kathleah’s portfolio.">
+    <meta name="twitter:image" content="https://kathleah17.github.io/Kathleah_portfolio-2026/Assets/img/etransit.jpg">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&amp;family=Outfit:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <noscript>
+        <style>.site-nav { display: block !important; position: static !important; }</style>
+    </noscript>
+
+    <header class="site-header">
+        <div class="container header-bar">
+            <a class="logo" href="index.html">Kathleah</a>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+                <span class="menu-label">Menu</span>
+            </button>
+            <nav id="site-nav" class="site-nav" aria-label="Primary">
+                <ul class="nav-links">
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#skills">Skills</a></li>
+                    <li><a href="index.html#expertise">Expertise</a></li>
+                    <li><a href="all-projects.html" aria-current="page">Projects</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark theme">
+                <span class="theme-toggle-text">Dark</span>
+            </button>
+        </div>
+    </header>
+
+    <main id="main">
+        <article class="detail">
+            <div class="container narrow">
+                <p><a class="back-link" href="all-projects.html">Back to all projects</a></p>
+                <p class="kicker">Development</p>
+                <h1>Etransit</h1>
+                <div class="stack">
+                    <p>A sign-in screen for a transit product.</p>
+                    <p>The screenshot shows a coach on a highway at sunset, with the line “Seamless Journeys, One Scan Away!” The panel offers Google, Facebook, and Apple, then “Continue to login” and “Continue to sign up.”</p>
+                </div>
+                <figure class="detail-figure">
+                    <img src="Assets/img/etransit.jpg" width="1016" height="551" alt="Etransit sign-in screen with a coach on a highway at sunset beside buttons for Google, Facebook, Apple, login, and sign up. The line on the photo reads Seamless Journeys, One Scan Away!">
+                    <figcaption>Project screenshot.</figcaption>
+                </figure>
+                <div class="todo-panel">
+                    <h2>Still to add</h2>
+                    <ul class="todo-list">
+                        <li>TODO: add the live site URL</li>
+                        <li>TODO: add your role, tools, and date</li>
+                        <li>TODO: add more screenshots if you have them</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+        <section class="section band" aria-labelledby="more-heading">
+            <div class="container">
+                <h2 id="more-heading">More projects</h2>
+                <ul class="more-list">
+                    <li><a href="project-izaks.html">Izak’s Homemade Treats <span>Development</span></a></li>
+                    <li><a href="project-power-bi.html">TODO: Power BI dashboard title <span>PBI Development</span></a></li>
+                    <li><a href="project-content.html">TODO: social content title <span>Other Skills</span></a></li>
+                    <li><a href="project-ai.html">TODO: AI image or video title <span>Other Skills</span></a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <p class="footer-name">Kathleah</p>
+                <p class="footer-role">Admin, IT Assistant, and Power BI Developer/Analyst at Lifewood Data Technology PH.</p>
+            </div>
+            <ul class="footer-links">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="all-projects.html" aria-current="page">Projects</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="https://github.com/Kathleah17" rel="noopener noreferrer">GitHub</a></li>
+            </ul>
+        </div>
+        <div class="container">
+            <p class="legal">© 2026 Kathleah</p>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+</html>
