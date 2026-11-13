@@ -1,6 +1,6 @@
 # Supabase setup
 
-The public site works without this. Supabase is only needed for the admin editor and for live content updates. Until the URL and anon key are filled in, the site keeps using `js/contact.js`, `js/projects.js`, and `js/site-data.js`.
+The public site works without a successful Supabase response. The project URL and anon key are already in `js/supabase-config.js`. If that request fails, the site keeps using `js/contact.js`, `js/projects.js`, and `js/site-data.js`.
 
 Use the anon key only. Do not put a service role key in the repository.
 
@@ -21,7 +21,7 @@ Use the anon key only. Do not put a service role key in the repository.
 
 1. In Supabase, open Authentication, then Providers, then GitHub, and turn it on.
 2. Create a GitHub OAuth app at [github.com/settings/developers](https://github.com/settings/developers).
-3. Set the authorization callback URL to the callback Supabase shows. It looks like `https://YOUR-PROJECT.supabase.co/auth/v1/callback`.
+3. Set the GitHub OAuth app authorization callback URL to `https://guvthasbpooysrjkzigw.supabase.co/auth/v1/callback`.
 4. Paste the GitHub client id and client secret into the Supabase GitHub provider.
 5. In Authentication, then URL configuration, set the site URL to `https://kathleah17.github.io/Kathleah_portfolio-2026`.
 6. Add these redirect URLs:
@@ -43,9 +43,9 @@ values ('PASTE-USER-ID', 'Kathleah17');
 
 Anyone else who signs in with GitHub sees the allowlist message and cannot write rows or upload files.
 
-## 5. Paste the public key
+## 5. Public key
 
-In `js/supabase-config.js`, set `url` and `anonKey`. Leave them empty until this is done. Do not commit a service role key.
+`js/supabase-config.js` already has the project URL `https://guvthasbpooysrjkzigw.supabase.co` and the anon key. Do not replace that with a service role key.
 
 After a refresh, the home page, projects page, and Power BI file list read published rows from Supabase. If the request fails, they fall back to the static files.
 
