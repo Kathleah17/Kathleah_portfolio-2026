@@ -256,6 +256,7 @@
 
         var todoList = document.getElementById("contact-todo-list");
         if (todoList) {
+            todoList.textContent = "";
             Object.keys(contact).forEach(function (key) {
                 if (!isPlaceholder(contact[key])) return;
                 var item = document.createElement("li");
@@ -263,7 +264,7 @@
                 todoList.appendChild(item);
             });
             var todoTitle = document.getElementById("contact-todo-title");
-            if (todoTitle && !todoList.children.length) todoTitle.hidden = true;
+            if (todoTitle) todoTitle.hidden = !todoList.children.length;
         }
     }
 
@@ -571,5 +572,18 @@
             target = routes.etransit;
         }
         if (target) window.location.replace(target);
+    }
+
+    var contactNodes = document.querySelectorAll(".contact-reveal");
+    if (contactNodes.length && !window.matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window) {
+        root.classList.add("motion");
+        var contactObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add("is-in");
+                contactObserver.unobserve(entry.target);
+            });
+        }, { threshold: 0.18 });
+        contactNodes.forEach(function (node) { contactObserver.observe(node); });
     }
 })();
