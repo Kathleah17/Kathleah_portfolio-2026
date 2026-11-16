@@ -88,7 +88,7 @@
                 <ul class="nav-links">
                     <li><a href="index.html#about">About</a></li>
                     <li><a href="index.html#skills">Skills</a></li>
-                    <li><a href="index.html#expertise">Expertise</a></li>
+                    <li><a href="expertise.html">Expertise</a></li>
                     <li><a href="all-projects.html">Projects</a></li>
                     <li><a href="index.html#contact">Contact</a></li>
                 </ul>
@@ -286,6 +286,18 @@
                         <a class="social-link" data-contact="x" data-label="X" href="#contact"><span class="icon" data-icon="x"></span><span class="visually-hidden">X</span></a>
                         <a class="social-link" data-contact="github" data-label="GitHub" href="https://github.com/Kathleah17"><span class="icon" data-icon="github"></span><span class="visually-hidden">GitHub</span></a>
                     </div>
+                    <form id="inquiry-form" class="inquiry-form" novalidate>
+                        <h3>Send a message</h3>
+                        <p class="note">This saves a note for Kathleah. It does not send email by itself.</p>
+                        <label class="hp-field">Company website <input name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true"></label>
+                        <label class="field">Name <input name="name" required maxlength="120" autocomplete="name"></label>
+                        <label class="field">Email <input name="email" type="email" required maxlength="200" autocomplete="email"></label>
+                        <label class="field">Company <input name="company" maxlength="160" autocomplete="organization"></label>
+                        <label class="field">Role <input name="role" maxlength="160"></label>
+                        <label class="field">Message <textarea name="message" required maxlength="4000" rows="5"></textarea></label>
+                        <button class="btn" type="submit">Send message</button>
+                        <p id="inquiry-status" class="status" role="status" hidden></p>
+                    </form>
                     <h3 id="contact-todo-title">Still to add</h3>
                     <ul class="todo-list" id="contact-todo-list"></ul>
                 </div>
@@ -316,5 +328,6 @@
     <script src="js/projects.js"></script>
     <script src="js/content-loader.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/admin-shortcut.js"></script>
 </body>
 </html>

@@ -32,8 +32,17 @@
             <section id="signed-out" class="hire-card">
                 <p class="eyebrow">Private</p>
                 <h1>Portfolio admin</h1>
-                <p class="lead">Sign in with GitHub. Only the account on the admin allowlist can change the site.</p>
+                <p class="lead">Sign in with GitHub or with the email account created in the Supabase dashboard. Only an allowlisted user can change the site.</p>
                 <p id="config-note"></p>
+                <form id="password-form" class="inquiry-form">
+                    <h2>Email</h2>
+                    <label class="field">Email <input name="email" type="email" autocomplete="username" required></label>
+                    <label class="field">Password <input name="password" type="password" autocomplete="current-password" required></label>
+                    <div class="hire-actions">
+                        <button class="btn" type="submit">Sign in with email</button>
+                        <button class="btn btn-ghost" type="button" id="forgot-password">Forgot password</button>
+                    </div>
+                </form>
                 <div class="hire-actions">
                     <button class="btn" type="button" id="sign-in">Sign in with GitHub</button>
                     <a class="btn btn-ghost" href="admin.html?preview=1">Preview the editor</a>
@@ -42,100 +51,152 @@
 
             <section id="not-admin" class="hire-card" hidden>
                 <h1>Not on the allowlist</h1>
-                <p>This GitHub account can sign in, but it cannot edit the portfolio until it is added in Supabase.</p>
+                <p>This account can sign in, but it cannot edit the portfolio until it is added in Supabase.</p>
                 <p>User id: <code id="user-id"></code></p>
                 <p>GitHub login: <code id="github-login"></code></p>
-                <p>In the Supabase SQL editor, run the insert shown in SETUP.md using this user id.</p>
+                <p>In the Supabase SQL editor, run the insert shown in SETUP.md using this user id. An email login is a separate user unless the identities are linked.</p>
             </section>
 
-            <div id="editor" hidden>
-                <p id="preview-banner" class="status" hidden>Preview only. Nothing is saved. Sign in after Supabase is configured to edit the live site.</p>
+            <div id="editor" class="admin-app" hidden>
+                <nav class="admin-nav" aria-label="Admin">
+                    <button type="button" data-nav="dashboard" aria-current="page">Dashboard</button>
+                    <button type="button" data-nav="projects">Projects</button>
+                    <button type="button" data-nav="expertise">Expertise</button>
+                    <button type="button" data-nav="profile">Profile</button>
+                    <button type="button" data-nav="contact">Contact &amp; Socials</button>
+                    <button type="button" data-nav="inquiries">Inquiries</button>
+                    <button type="button" data-nav="settings">Settings</button>
+                </nav>
+                <div>
+                    <p id="preview-banner" class="status" hidden>Preview only. Nothing is saved. Sign in after Supabase is configured to edit the live site.</p>
 
-                <section class="hire-card admin-block">
-                    <h2>Profile</h2>
-                    <form id="profile-form">
-                        <label class="field">Headline <input name="headline" required></label>
-                        <label class="field">Tagline <textarea name="tagline" rows="3" required></textarea></label>
-                        <label class="field">About <textarea name="about" rows="6" required></textarea></label>
-                        <label class="field">Degree <input name="degree" required></label>
-                        <label class="field">Experience <textarea name="experience" rows="3" required></textarea></label>
-                        <button class="btn" type="submit">Save profile</button>
-                    </form>
-                </section>
-
-                <section class="hire-card admin-block">
-                    <h2>Contact and social</h2>
-                    <form id="contact-form">
-                        <label class="field">Gmail address <input name="email" autocomplete="off"></label>
-                        <label class="field">WhatsApp number <input name="whatsapp" autocomplete="off"></label>
-                        <label class="field">LinkedIn URL <input name="linkedin" autocomplete="off"></label>
-                        <label class="field">Pinterest URL <input name="pinterest" autocomplete="off"></label>
-                        <label class="field">Instagram URL <input name="instagram" autocomplete="off"></label>
-                        <label class="field">Facebook URL <input name="facebook" autocomplete="off"></label>
-                        <label class="field">X URL <input name="x" autocomplete="off"></label>
-                        <label class="field">GitHub URL <input name="github" autocomplete="off"></label>
-                        <label class="field">Resume note or URL <input name="resume" autocomplete="off"></label>
-                        <button class="btn" type="submit">Save contact</button>
-                    </form>
-                </section>
-
-                <section class="hire-card admin-block">
-                    <h2>Skills</h2>
-                    <div id="skill-editor"></div>
-                    <button class="btn btn-ghost" type="button" id="add-skill">Add skill group</button>
-                    <button class="btn" type="button" id="save-skills">Save skills</button>
-                </section>
-
-                <section class="hire-card admin-block">
-                    <h2>Projects</h2>
-                    <div class="hire-actions">
-                        <label class="field">Choose
-                            <select id="project-picker"></select>
-                        </label>
-                        <button class="btn btn-ghost" type="button" id="new-project">New project</button>
-                    </div>
-                    <form id="project-form">
-                        <label class="field">Id <input name="id" required pattern="[a-z0-9-]+" title="Lowercase letters, numbers, and hyphens"></label>
-                        <label class="field">Title <input name="title" required></label>
-                        <label class="field">Folder
-                            <select name="category">
-                                <option value="development">Web &amp; App Development</option>
-                                <option value="pbi">PBI Development</option>
-                                <option value="other">Other Skills</option>
-                            </select>
-                        </label>
-                        <label class="field">Summary <textarea name="summary" rows="3"></textarea></label>
-                        <label class="field">Description <textarea name="description" rows="4"></textarea></label>
-                        <label class="field">Experience <textarea name="experience" rows="3"></textarea></label>
-                        <label class="field">Tech stack, comma separated <input name="tech" placeholder="Dart, JavaScript"></label>
-                        <label class="field">Tech note <input name="tech_note" placeholder="TODO: confirm whether the Dart work is Flutter"></label>
-                        <label class="field">Thumbnail URL <input name="thumbnail"></label>
-                        <label class="field">Upload thumbnail <input name="thumbnail_file" type="file" accept="image/*"></label>
-                        <label class="field">Live or report link <input name="live_url"></label>
-                        <label class="field">Power BI report URL <input name="report_url"></label>
-                        <label class="field">Detail page <input name="page" placeholder="project-example.html"></label>
-                        <label class="field">Sort order <input name="sort_order" type="number" value="0"></label>
-                        <label class="check"><input name="published" type="checkbox" checked> Published</label>
-                        <label class="check"><input name="placeholder" type="checkbox"> Placeholder</label>
-                        <fieldset class="resource-editor">
-                            <legend>PBI files</legend>
-                            <div id="resource-editor"></div>
-                            <button class="btn btn-ghost" type="button" id="add-resource">Add file</button>
-                        </fieldset>
-                        <div class="hire-actions">
-                            <button class="btn" type="submit">Save project</button>
-                            <button class="btn btn-ghost" type="button" id="delete-project">Delete project</button>
+                    <section data-view="dashboard" class="hire-card admin-block">
+                        <p class="eyebrow">Dashboard</p>
+                        <h1>Welcome back, Kathleah</h1>
+                        <p class="lead">A snapshot of the library and the inbox.</p>
+                        <div class="stat-grid" id="stat-grid"></div>
+                        <div class="chart-grid">
+                            <div class="chart-card"><canvas id="chart-categories" aria-label="Projects per category"></canvas></div>
+                            <div class="chart-card"><canvas id="chart-inquiries" aria-label="Inquiries over time"></canvas></div>
                         </div>
-                    </form>
-                </section>
+                    </section>
+
+                    <section data-view="projects" class="hire-card admin-block" hidden>
+                        <h2>Project library</h2>
+                        <div class="hire-actions">
+                            <label class="field">Search <input id="library-search" type="search"></label>
+                            <div class="filters" id="library-filters" role="group" aria-label="Filter projects">
+                                <button type="button" class="chip" data-folder="all">All</button>
+                                <button type="button" class="chip" data-folder="development">Web &amp; App</button>
+                                <button type="button" class="chip" data-folder="pbi">PBI</button>
+                                <button type="button" class="chip" data-folder="other">Other</button>
+                            </div>
+                            <button class="btn" type="button" id="new-project">New project</button>
+                        </div>
+                        <div class="library-grid" id="library-grid"></div>
+                    </section>
+
+                    <section data-view="expertise" class="hire-card admin-block" hidden>
+                        <h2>Expertise</h2>
+                        <p class="note" id="expertise-note"></p>
+                        <div id="expertise-editor"></div>
+                        <button class="btn btn-ghost" type="button" id="add-expertise">Add section</button>
+                    </section>
+
+                    <section data-view="profile" class="hire-card admin-block" hidden>
+                        <h2>Profile</h2>
+                        <form id="profile-form">
+                            <label class="field">Headline <input name="headline" required></label>
+                            <label class="field">Tagline <textarea name="tagline" rows="3" required></textarea></label>
+                            <label class="field">About <textarea name="about" rows="6" required></textarea></label>
+                            <label class="field">Degree <input name="degree" required></label>
+                            <label class="field">Experience <textarea name="experience" rows="3" required></textarea></label>
+                            <button class="btn" type="submit">Save profile</button>
+                        </form>
+                    </section>
+
+                    <section data-view="contact" class="hire-card admin-block" hidden>
+                        <h2>Contact &amp; Socials</h2>
+                        <form id="contact-form">
+                            <label class="field">Gmail address <input name="email" autocomplete="off"></label>
+                            <label class="field">WhatsApp number <input name="whatsapp" autocomplete="off"></label>
+                            <label class="field">LinkedIn URL <input name="linkedin" autocomplete="off"></label>
+                            <label class="field">Pinterest URL <input name="pinterest" autocomplete="off"></label>
+                            <label class="field">Instagram URL <input name="instagram" autocomplete="off"></label>
+                            <label class="field">Facebook URL <input name="facebook" autocomplete="off"></label>
+                            <label class="field">X URL <input name="x" autocomplete="off"></label>
+                            <label class="field">GitHub URL <input name="github" autocomplete="off"></label>
+                            <label class="field">Resume note or URL <input name="resume" autocomplete="off"></label>
+                            <button class="btn" type="submit">Save contact</button>
+                        </form>
+                    </section>
+
+                    <section data-view="inquiries" class="hire-card admin-block" hidden>
+                        <h2>Inquiries</h2>
+                        <p id="inquiries-note" class="note"></p>
+                        <div id="inquiries-list"></div>
+                    </section>
+
+                    <section data-view="settings" class="hire-card admin-block" hidden>
+                        <h2>Settings</h2>
+                        <p>The keyboard shortcut that opens this page is set in <code>js/admin-shortcut.js</code>. It is only a shortcut. Signing in, and the admin allowlist, are what protect edits.</p>
+                        <p>Email accounts are created in the Supabase dashboard. There is no public sign-up form. Add that user’s id to <code>public.admins</code>, or link the email identity to the GitHub user.</p>
+                        <div id="skill-editor"></div>
+                        <button class="btn btn-ghost" type="button" id="add-skill">Add skill group</button>
+                        <button class="btn" type="button" id="save-skills">Save skills</button>
+                    </section>
+                </div>
             </div>
         </div>
     </main>
+
+    <dialog class="admin-dialog" id="project-dialog">
+        <div class="hire-card">
+            <h2>Edit project</h2>
+            <select id="project-picker" hidden></select>
+            <form id="project-form">
+                <label class="field">Id <input name="id" required pattern="[a-z0-9-]+" title="Lowercase letters, numbers, and hyphens"></label>
+                <label class="field">Title <input name="title" required></label>
+                <label class="field">Folder
+                    <select name="category">
+                        <option value="development">Web &amp; App Development</option>
+                        <option value="pbi">PBI Development</option>
+                        <option value="other">Other Skills</option>
+                    </select>
+                </label>
+                <label class="field">Summary <textarea name="summary" rows="3"></textarea></label>
+                <label class="field">Description <textarea name="description" rows="4"></textarea></label>
+                <label class="field">Experience <textarea name="experience" rows="3"></textarea></label>
+                <label class="field">Tech stack, comma separated <input name="tech" placeholder="Dart, JavaScript"></label>
+                <label class="field">Tech note <input name="tech_note"></label>
+                <label class="field">Thumbnail URL <input name="thumbnail"></label>
+                <label class="field">Upload thumbnail <input name="thumbnail_file" type="file" accept="image/*"></label>
+                <label class="field">Live or report link <input name="live_url"></label>
+                <label class="field">Power BI report URL <input name="report_url"></label>
+                <label class="field">Detail page <input name="page" placeholder="project-example.html"></label>
+                <label class="field">Sort order <input name="sort_order" type="number" value="0"></label>
+                <label class="check"><input name="published" type="checkbox" checked> Published</label>
+                <label class="check"><input name="placeholder" type="checkbox"> Placeholder</label>
+                <fieldset class="resource-editor">
+                    <legend>PBI files</legend>
+                    <div id="resource-editor"></div>
+                    <button class="btn btn-ghost" type="button" id="add-resource">Add file</button>
+                </fieldset>
+                <div class="hire-actions">
+                    <button class="btn" type="submit">Save project</button>
+                    <button class="btn btn-ghost" type="button" id="delete-project">Delete project</button>
+                    <button class="btn btn-ghost" type="button" id="close-project">Close</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
     <script src="js/supabase-config.js"></script>
     <script src="js/site-data.js"></script>
     <script src="js/contact.js"></script>
     <script src="js/projects.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"></script>
     <script src="js/admin.js"></script>
 </body>
 </html>

@@ -487,6 +487,60 @@
         }
     }
 
+    var inquiryForm = document.getElementById("inquiry-form");
+    if (inquiryForm && !inquiryForm.dataset.bound) {
+        inquiryForm.dataset.bound = "1";
+        inquiryForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+            var status = document.getElementById("inquiry-status");
+            function say(text, isError) {
+                status.hidden = false;
+                status.textContent = text;
+                status.classList.toggle("is-error", !!isError);
+            }
+            if (inquiryForm.elements.company_website.value) {
+                say("Message received.");
+                inquiryForm.reset();
+                return;
+            }
+            var payload = {
+                name: inquiryForm.elements.name.value.trim(),
+                email: inquiryForm.elements.email.value.trim(),
+                company: inquiryForm.elements.company.value.trim(),
+                role: inquiryForm.elements.role.value.trim(),
+                message: inquiryForm.elements.message.value.trim()
+            };
+            if (payload.name.length < 1 || payload.name.length > 120 || payload.email.length < 3 || payload.email.length > 200 || payload.email.indexOf("@") < 1 || payload.message.length < 1 || payload.message.length > 4000 || payload.company.length > 160 || payload.role.length > 160) {
+                say("Check the name, email, and message lengths, then try again.", true);
+                return;
+            }
+            var ready = window.CONTENT_READY || Promise.resolve(false);
+            ready.then(function () {
+                var cfg = window.SUPABASE_CONFIG || {};
+                if (!window.SUPABASE_CLIENT || !cfg.url) {
+                    say("The inbox is not ready yet. Use Email or Hiring? Send an inquiry instead.", true);
+                    return null;
+                }
+                return window.SUPABASE_CLIENT.from("inquiries").insert({
+                    name: payload.name,
+                    email: payload.email,
+                    company: payload.company || null,
+                    role: payload.role || null,
+                    message: payload.message
+                });
+            }).then(function (result) {
+                if (!result) return;
+                if (result.error) say("The message was not saved. Use Email or Hiring? Send an inquiry instead.", true);
+                else {
+                    say("Message received. Kathleah can read it in the admin inbox.");
+                    inquiryForm.reset();
+                }
+            }).catch(function () {
+                say("The message was not saved. Use Email or Hiring? Send an inquiry instead.", true);
+            });
+        });
+    }
+
     renderDynamic();
     applyProfile();
     if (window.CONTENT_READY && window.CONTENT_READY.then) {
