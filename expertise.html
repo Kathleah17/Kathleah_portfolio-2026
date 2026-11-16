@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f3efe7">
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem("theme");
+                var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+                if (dark) document.documentElement.setAttribute("data-theme", "dark");
+            } catch (err) {}
+        })();
+    </script>
+    <title>Expertise | Kathleah</title>
+    <meta name="description" content="Longer notes on Kathleah’s work in web and apps, Power BI, data analytics, social content, AI, and IT support.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://kathleah17.github.io/Kathleah_portfolio-2026/expertise.html">
+    <meta property="og:title" content="Expertise | Kathleah">
+    <meta property="og:description" content="Longer notes on Kathleah’s work in web and apps, Power BI, data analytics, social content, AI, and IT support.">
+    <meta property="og:url" content="https://kathleah17.github.io/Kathleah_portfolio-2026/expertise.html">
+    <meta property="og:image" content="https://kathleah17.github.io/Kathleah_portfolio-2026/Assets/img/headshot.jpg">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&amp;family=Outfit:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <noscript><style>.site-nav { display: block !important; position: static !important; }</style></noscript>
+    <header class="site-header">
+        <div class="container header-bar">
+            <a class="logo" href="index.html">Kathleah</a>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="menu-label">Menu</span></button>
+            <nav id="site-nav" class="site-nav" aria-label="Primary">
+                <ul class="nav-links">
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#skills">Skills</a></li>
+                    <li><a href="expertise.html" aria-current="page">Expertise</a></li>
+                    <li><a href="all-projects.html">Projects</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark theme"><span class="theme-toggle-text">Dark</span></button>
+        </div>
+    </header>
+    <main id="main">
+        <section class="page-intro">
+            <div class="container narrow">
+                <p class="eyebrow">Expertise</p>
+                <h1>Notes on the work</h1>
+                <p class="lead">Longer writing for each area. Passages marked TODO are waiting for Kathleah’s own words.</p>
+            </div>
+        </section>
+        <div id="expertise-root"></div>
+    </main>
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <p class="footer-name">Kathleah</p>
+                <p class="footer-role">Admin, IT support, Power BI, data analytics, web and app development, content, and AI.</p>
+            </div>
+            <ul class="footer-links">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="expertise.html" aria-current="page">Expertise</a></li>
+                <li><a href="all-projects.html">Projects</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+        <div class="container"><p class="legal">© 2026 Kathleah · <a href="admin.html">Admin</a></p></div>
+    </footer>
+    <script src="js/supabase-config.js"></script>
+    <script src="js/site-data.js"></script>
+    <script src="js/content-loader.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/expertise.js"></script>
+    <script src="js/admin-shortcut.js"></script>
+</body>
+</html>

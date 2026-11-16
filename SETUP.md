@@ -49,6 +49,29 @@ Anyone else who signs in with GitHub sees the allowlist message and cannot write
 
 After a refresh, the home page, projects page, and Power BI file list read published rows from Supabase. If the request fails, they fall back to the static files.
 
+## 6. Apply the dashboard migration
+
+The inquiries inbox and expertise essays need a second SQL file. In the SQL editor, run `supabase/migrations/20261116023000_admin_dashboard.sql`. The site does not apply it for you. Until it is applied, the public contact form reports that the inbox is not ready, and the admin inquiries and expertise screens explain that.
+
+## 7. Email and password sign-in
+
+There is no public sign-up form.
+
+1. In Supabase, open Authentication, then Users, then Add user. Create the email and password there.
+2. Turn on the Email provider if it is off. For “Forgot password”, set the redirect URL to `https://kathleah17.github.io/Kathleah_portfolio-2026/admin.html`.
+3. Sign in once on `admin.html` with that email. If it is a different user from GitHub, the page shows a second user id. Add it:
+
+```sql
+insert into public.admins (user_id, github_login)
+values ('PASTE-EMAIL-USER-ID', null);
+```
+
+Linking the email identity to the existing GitHub user in the Supabase dashboard is an alternative. Then one `public.admins` row covers both sign-in methods. Writes still depend on that allowlist and row level security, not on which button was used.
+
+## 8. Keyboard shortcut
+
+`js/admin-shortcut.js` holds `ADMIN_SHORTCUT`. The default is `TODO-SET-CODE`. Change that string to a private phrase. Typing it on a public page only redirects to `admin.html`. The code is visible in public JavaScript, so it is not a password and it does not grant access. Supabase sign-in and `public.is_admin()` remain the protection.
+
 ## What to edit later
 
 - Contact links and the hiring email address: the Contact form in `admin.html`, or `js/contact.js` before Supabase is connected.
