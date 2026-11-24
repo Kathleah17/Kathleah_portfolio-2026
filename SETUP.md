@@ -68,7 +68,13 @@ values ('PASTE-EMAIL-USER-ID', null);
 
 Linking the email identity to the existing GitHub user in the Supabase dashboard is an alternative. Then one `public.admins` row covers both sign-in methods. Writes still depend on that allowlist and row level security, not on which button was used.
 
-## 8. Keyboard shortcut
+## 8. Theme colors
+
+Run `supabase/migrations/20261124081500_theme_settings.sql` in the SQL editor. That creates one `public.theme_settings` row. Visitors can read it. Only an allowlisted admin can change it.
+
+The Theme view in `admin.html` edits Primary and Secondary, and can add Third and Fourth. Dark colors are generated from the light colors. Reset to auto puts a generated color back. Reset to default restores the original palette. Until this SQL is applied, the site keeps the colors in `style.css`.
+
+## 9. Keyboard shortcut
 
 `js/admin-shortcut.js` holds `ADMIN_SHORTCUT`. The default is `TODO-SET-CODE`. Change that string to a private phrase. Typing it on a public page only redirects to `admin.html`. The code is visible in public JavaScript, so it is not a password and it does not grant access. Supabase sign-in and `public.is_admin()` remain the protection.
 

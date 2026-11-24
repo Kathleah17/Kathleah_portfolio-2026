@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&amp;family=Outfit:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="js/theme.js"></script>
 </head>
 <body>
     <a class="skip-link" href="#admin-main">Skip to content</a>
@@ -65,6 +66,7 @@
                     <button type="button" data-nav="profile">Profile</button>
                     <button type="button" data-nav="contact">Contact &amp; Socials</button>
                     <button type="button" data-nav="inquiries">Inquiries</button>
+                    <button type="button" data-nav="theme">Theme</button>
                     <button type="button" data-nav="settings">Settings</button>
                 </nav>
                 <div>
@@ -135,6 +137,12 @@
                         <h2>Inquiries</h2>
                         <p id="inquiries-note" class="note"></p>
                         <div id="inquiries-list"></div>
+                    </section>
+
+                    <section data-view="theme" class="hire-card admin-block" hidden>
+                        <p class="eyebrow">Appearance</p>
+                        <h2>Theme</h2>
+                        <div id="theme-editor"></div>
                     </section>
 
                     <section data-view="settings" class="hire-card admin-block" hidden>

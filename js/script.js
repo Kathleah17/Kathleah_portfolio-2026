@@ -18,7 +18,10 @@
         if (themeText) themeText.textContent = dark ? "Light" : "Dark";
 
         var meta = document.querySelector('meta[name="theme-color"]');
-        if (meta) meta.setAttribute("content", dark ? "#141311" : "#f3efe7");
+        if (meta) {
+            var chrome = window.PortfolioTheme && window.PortfolioTheme.chromeColor;
+            meta.setAttribute("content", chrome ? window.PortfolioTheme.chromeColor(dark) : (dark ? "#141311" : "#f3efe7"));
+        }
     }
 
     applyTheme(root.getAttribute("data-theme") === "dark" ? "dark" : "light");
