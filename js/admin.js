@@ -32,8 +32,14 @@
         var dark = document.documentElement.getAttribute("data-theme") === "dark";
         if (dark) document.documentElement.removeAttribute("data-theme");
         else document.documentElement.setAttribute("data-theme", "dark");
-        this.setAttribute("aria-pressed", dark ? "false" : "true");
-        this.querySelector(".theme-toggle-text").textContent = dark ? "Dark" : "Light";
+        var nowDark = !dark;
+        this.setAttribute("aria-pressed", nowDark ? "true" : "false");
+        this.setAttribute("aria-label", nowDark ? "Switch to light theme" : "Switch to dark theme");
+        this.querySelector(".theme-toggle-text").textContent = nowDark ? "Light" : "Dark";
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta && window.PortfolioTheme && window.PortfolioTheme.chromeColor) {
+            meta.setAttribute("content", window.PortfolioTheme.chromeColor(nowDark));
+        }
     });
 
     function formData(form) {
@@ -380,6 +386,13 @@
         fill(document.getElementById("contact-form"), state.contact);
         renderSkills();
         fillPicker();
+        if (window.PortfolioTheme) {
+            window.PortfolioTheme.mount({
+                client: state.preview ? null : client,
+                preview: state.preview,
+                note: note
+            });
+        }
         showView("dashboard");
         if (state.preview) {
             document.querySelectorAll('#editor button[type="submit"], #project-dialog button[type="submit"], #save-skills, #delete-project, input[type="file"]').forEach(function (control) {

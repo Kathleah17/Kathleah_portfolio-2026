@@ -114,7 +114,7 @@ h2 {
 }
 
 a {
-    color: var(--accent);
+    color: var(--link, var(--accent));
 }
 
 a:hover {
@@ -186,7 +186,7 @@ a:hover {
 
 .eyebrow,
 .kicker {
-    color: var(--accent);
+    color: var(--highlight, var(--accent));
     font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 0.14em;
@@ -1231,6 +1231,142 @@ html.motion .contact-reveal.is-in {
 
 .admin-dialog::backdrop {
     background: rgba(29, 26, 22, 0.45);
+}
+
+.theme-slot {
+    margin: 0.85rem 0 0;
+    padding: 0.85rem 0 0.2rem;
+    border: 0;
+    border-top: 1px solid var(--line);
+}
+
+.theme-slot legend {
+    padding: 0;
+    font-weight: 700;
+}
+
+.theme-color-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.55rem 0.7rem;
+    margin-top: 0.55rem;
+}
+
+.theme-color-row > span:first-child {
+    min-width: 3.2rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.theme-color-row input[type="color"] {
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.theme-hex {
+    width: 8.2rem;
+    min-height: 48px;
+    border: 0;
+    border-radius: 12px;
+    padding: 0.4rem 0.75rem;
+    background: var(--neu-surface);
+    color: var(--ink);
+    box-shadow: var(--neu-inset);
+    font: inherit;
+    font-weight: 650;
+}
+
+.theme-slot-tools {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.55rem;
+    margin-top: 0.65rem;
+}
+
+.theme-auto {
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
+.theme-remove {
+    width: 44px;
+    height: 44px;
+    margin-left: auto;
+    border: 0;
+    border-radius: 12px;
+    background: var(--neu-surface);
+    color: var(--ink);
+    box-shadow: var(--neu-raised);
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.theme-warn {
+    color: #6b1d1d;
+    font-size: 0.88rem;
+    font-weight: 650;
+}
+
+:root[data-theme="dark"] .theme-warn {
+    color: #ffb4b4;
+}
+
+.theme-derived {
+    margin-top: 0.4rem;
+}
+
+.theme-previews {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+    margin-top: 1.1rem;
+}
+
+.theme-preview {
+    border-radius: 18px;
+    padding: 1rem 1rem 0.9rem;
+    background: var(--bg);
+    color: var(--ink);
+    border: 1px solid var(--line);
+}
+
+.theme-preview h3 {
+    margin-top: 0.25rem;
+    font-size: clamp(1.7rem, 3vw, 2.2rem);
+    color: var(--ink);
+}
+
+.theme-sample-card {
+    margin: 0.75rem 0;
+    padding: 0.8rem 0.9rem;
+    border-radius: 14px;
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+}
+
+.theme-sample-card p {
+    margin-bottom: 0.35rem;
+}
+
+.theme-preview .btn,
+.theme-preview .btn-ghost {
+    min-height: 44px;
+}
+
+@media (max-width: 800px) {
+    .theme-previews {
+        grid-template-columns: 1fr;
+    }
 }
 
 .admin-dialog .hire-card {

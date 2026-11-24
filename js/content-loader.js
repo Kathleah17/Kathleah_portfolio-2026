@@ -19,6 +19,7 @@ window.CONTENT_READY = (function () {
     return loadScript("https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2").then(function () {
         var client = window.supabase.createClient(cfg.url, cfg.anonKey);
         window.SUPABASE_CLIENT = client;
+        if (window.PortfolioTheme) window.PortfolioTheme.refresh(client);
         return Promise.all([
             client.from("profile").select("*").eq("id", 1).maybeSingle(),
             client.from("skill_groups").select("*").eq("published", true).order("sort_order"),
